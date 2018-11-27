@@ -26,7 +26,7 @@ class CarController extends Controller
                  ->groupBy('make')
                  ->get();
             $marques=$marques->sortBy('make');
-            $cars=TblCarScrape::where('dealer_post_code','>','')->orderBy('make')->paginate(25);
+            $cars=TblCarScrape::where('dealer_post_code','>','')->orderBy('make')->paginate(10);
            // $cars=$cars->sortBy('make');
             return view('index',compact('cars'),compact('marques'), compact('dealerscores'));
     }
