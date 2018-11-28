@@ -11,7 +11,7 @@
 		  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 		  		@foreach($marques as $make)
 			    <a class="dropdown-item" href="{{$make->make}}">{{$make->make}}
-			    	<span class="badge badge-info">{{$make->total}}</span></a>
+			    	<span class="badge badge-info" style="float:right;">{{$make->total}}</span></a>
 
 			    @endforeach
 			  </div>
