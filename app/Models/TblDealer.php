@@ -25,6 +25,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $mobile
  * @property string $contact_name
  * @property string $contact_title
+ * @property string $dealer_web
+ * @property string $dealer_email
  *
  * @package App\Models
  */
@@ -49,6 +51,8 @@ class TblDealer extends Eloquent
 		'phone',
 		'mobile',
 		'contact_name',
-		'contact_title'
+		'contact_title',
+		'dealer_web',
+		'dealer_email'
 	];
 }

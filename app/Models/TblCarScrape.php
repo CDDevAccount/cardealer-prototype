@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 15 Nov 2018 13:12:12 +0000.
+ * Date: Fri, 30 Nov 2018 12:30:28 +0000.
  */
 
 namespace App\Models;
@@ -27,6 +27,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $doors
  * @property string $registration
  * @property string $year
+ * @property string $dealer_name
+ * @property string $dealer_website
+ * @property string $dealer_email
  * @property string $phone
  * @property string $dealer_description
  * @property string $images
@@ -65,6 +68,9 @@ class TblCarScrape extends Eloquent
 		'doors',
 		'registration',
 		'year',
+		'dealer_name',
+		'dealer_website',
+		'dealer_email',
 		'phone',
 		'dealer_description',
 		'images',
