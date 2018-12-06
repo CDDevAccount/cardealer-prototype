@@ -29,6 +29,7 @@ class APIController extends Controller
     }
     public function getModelList(Request $request)
     {
+
         $models = DB::table("tbl_car_scrape")
                     ->select('model', DB::raw('count(*) as total'))
                     ->groupBy('model')
@@ -37,7 +38,8 @@ class APIController extends Controller
                     ->get();
         return response()->json($models);
     }
-    /*
+
+
     public function getCityList(Request $request)
     {
         $cities = DB::table("cities")
@@ -46,5 +48,5 @@ class APIController extends Controller
                     ->get();
         return response()->json($cities);
     }
-    */
+
 }

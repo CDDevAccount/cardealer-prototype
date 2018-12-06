@@ -3,29 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-        	<div class="dropdown">
-	  			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    			Makes
-  				</button>
-		  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-		  		@foreach($marques as $make)
-			    <a class="dropdown-item" href="{{$make->make}}">{{$make->make}}
-			    	<span class="badge badge-info" style="float:right;">{{$make->total}}</span></a>
+        <div class="col-lg-6 col-md-8 col-sm-12">
 
-			    @endforeach
-			  </div>
-			</div>
             <div class="card">
-                <div class="card-header">@guest 
-                		Car Dealer Is Closed 
-                	@else
-            			Welcome to Car Dealer's Cornucopia of Cars
-            		@endguest
+                <div class="card-header">
+
+            			Welcome to Car Dealer's Cornucopia Quality of Cars
+     
             	</div>
                 <div class="card-body">
-                	@guest
-                	@else
+                	@include('dd')
                 	<div class='table-responsive'>
 					    <table class="table table-striped ">
 					    <thead>
@@ -33,7 +20,7 @@
 						        <th>Reg. No.</th>
 						        <th>Make</th>
 						        <th>Name</th>
-						        <th colspan="3">Action</th>
+						        <th colspan="2">Action</th>
 				        	</tr>
 					    </thead>
 					    	<tbody>
@@ -51,7 +38,6 @@
 
 				    	{{ $cars->links() }}
                     </div>
-			  	    @endguest
 
             </div>
         </div>
