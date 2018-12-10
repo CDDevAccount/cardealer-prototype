@@ -90,12 +90,13 @@
                     <a href="http://dev.cardealer.co.uk/dash">Dashboard</a>
                     <a href="http://www.cardealer.co.uk">Blog</a>
                 </div>
+
+            </div>
+
+        </div>
                 <div id="app">
                     <example-component></example-component>
                 </div>
-            </div>
-        </div>
-
         <script src="{{asset('/js/app.js')}}" ></script>
     </body>
 </html>
