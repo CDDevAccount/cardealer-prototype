@@ -53,9 +53,14 @@ class GeoController extends Controller
     	// Verify get data is valid postcode
     	if (preg_match('/^(([gG][iI][rR] {0,}0[aA]{2})|((([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y]?[0-9][0-9]?)|(([a-pr-uwyzA-PR-UWYZ][0-9][a-hjkstuwA-HJKSTUW])|([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y][0-9][abehmnprv-yABEHMNPRV-Y]))) {0,}[0-9][abd-hjlnp-uw-zABD-HJLNP-UW-Z]{2}))$/',$request->pcode)){
     		$postcode=$request->pcode;
-    		$pos = strpos($postcode, ' ');
-    		$outcode=substr($postcode, 0, $pos);
+
+    	}else{
+    		$postcode='EC1A 1AA';
+
     	}
+		$pos = strpos($postcode, ' ');
+		$outcode=substr($postcode, 0, $pos);
+
     	// instantiate a Guzzle http client & get the longitude and latitude of Postcode
         $client = new \GuzzleHttp\Client();
         $res = $client->get('https://api.postcodes.io/postcodes?q='.$postcode);
@@ -71,6 +76,7 @@ class GeoController extends Controller
 				}
 			}
         };
+
         // with the longitude and latitude, get the outcodes of the surrounding postcodes
         $outcodes=array();
         if ($long||$lat){

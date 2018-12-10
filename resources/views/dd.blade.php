@@ -17,7 +17,9 @@
                   <option ng-repeat="city in cities" value="<% city.id %>">  
                        <% city.name %>
                   </option>  
-             </select>  
+             </select> 
+             <br />
+             <input type="text" name="pcode" class="form-control" ng-change="loadCars()">
           </div>  
      </div>  
 
@@ -52,7 +54,16 @@ var app = angular.module('demoapp', [], function($interpolateProvider) {
            .success(function(data){  
                 $scope.cities = data;  
            });  
-      }  
+      } 
+      
+      $scope.loadCars=function(){
+          var url="{{url('get/loc')}}?pcode="+$scope.pcode
+          $http.get(url)
+          .success(function(data){
+              $scope.cars = data;
+          });
+      } 
+  
  });  
 
  </script>
