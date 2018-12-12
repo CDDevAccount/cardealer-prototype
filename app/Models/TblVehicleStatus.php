@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 15 Nov 2018 13:12:12 +0000.
+ * Date: Wed, 12 Dec 2018 13:24:18 +0000.
  */
 
 namespace App\Models;
@@ -14,6 +14,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * 
  * @property int $id
  * @property string $status
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $amended_at
  * 
  * @property \Illuminate\Database\Eloquent\Collection $tbl_vehicles
  *
@@ -29,8 +31,13 @@ class TblVehicleStatus extends Eloquent
 		'id' => 'int'
 	];
 
+	protected $dates = [
+		'amended_at'
+	];
+
 	protected $fillable = [
-		'status'
+		'status',
+		'amended_at'
 	];
 
 	public function tbl_vehicles()

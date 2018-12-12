@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 15 Nov 2018 13:12:12 +0000.
+ * Date: Wed, 12 Dec 2018 13:54:45 +0000.
  */
 
 namespace App\Models;
@@ -27,13 +27,15 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $contact_title
  * @property string $dealer_web
  * @property string $dealer_email
+ * @property string $outcode
+ * @property \Carbon\Carbon $updated_at
+ * @property \Carbon\Carbon $created_at
  *
  * @package App\Models
  */
 class TblDealer extends Eloquent
 {
 	protected $table = 'tbl_dealer';
-	public $timestamps = false;
 
 	protected $casts = [
 		'pid' => 'int'
@@ -53,6 +55,7 @@ class TblDealer extends Eloquent
 		'contact_name',
 		'contact_title',
 		'dealer_web',
-		'dealer_email'
+		'dealer_email',
+		'outcode'
 	];
 }

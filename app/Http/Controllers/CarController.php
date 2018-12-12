@@ -64,7 +64,7 @@ class CarController extends Controller
         //  
         $showcar=TblCarScrape::findOrFail($id);
         $car_reg=$showcar->registration;
-        $images=LinkCarImage::where('regnumber','=', $car_reg)->get();
+        $images=LinkCarImage::where('registration','=', $car_reg)->get();
          return view('viewcar', ['car' => $showcar,'images'=>$images]);
     }
 
