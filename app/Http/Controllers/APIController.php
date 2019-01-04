@@ -21,24 +21,19 @@ class APIController extends Controller
                     ->select("name","id")
                     ->get();
         */
-<<<<<<< Updated upstream
-            $makes = DB::table('tbl_car_scrape')
-=======
-       $makes = DB::table('tbl_car_scrape')
->>>>>>> Stashed changes
-                 ->select('make', DB::raw('count(*) as total'))
+
+       $makes = DB::table('tbl_vehicles')
+                ->select('make', DB::raw('count(*) as total'))
                  ->groupBy('make')
                  ->get();
         return response()->json($makes);
     }
-<<<<<<< Updated upstream
-=======
+
     
->>>>>>> Stashed changes
     public function getModelList(Request $request)
     {
 
-        $models = DB::table("tbl_car_scrape")
+        $models = DB::table("tbl_vehicles")
                     ->select('model', DB::raw('count(*) as total'))
                     ->groupBy('model')
                     ->where("make",$request->make)
@@ -55,6 +50,18 @@ class APIController extends Controller
                     ->select("name","id")
                     ->get();
         return response()->json($cities);
+    }
+
+
+    public function getVehicleList(Request $request)
+    {
+        $motors=DB::table("tbl_vehicles")
+                    ->select(*)
+                    ->where("make",$request->make)
+                    ->where("model",$request->model)
+                   // ->select("name","id")
+                    ->get();
+        return response()->json($motors);
     }
 
 }
