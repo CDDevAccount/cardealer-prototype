@@ -18,7 +18,6 @@
                             <thead>
                                 <tr>
                                         <th>Reg. No.</th>
-                                        <th>Slug.</th>
                                         <th>Make</th>
                                         <th>Name</th>
                                         <th colspan="2">Action</th>
@@ -27,8 +26,7 @@
                         	<tbody>
                                 @foreach($cars as $car)
                                       <tr>
-                                        <td><a href="<?= route('car.show', ['car' => $car['id']]);?>" class="btn btn-sm btn-success">{{$car->registration}}</a></td>
-                                        <td><a href="<?= route('used-cars.show', ['used-cars' => $car['slug']]);?>" class="btn btn-sm btn-outline">{{$car->slug}}</a></td>
+                                        <td><a href="<?= route('used-cars.show', ['used-cars' => $car['slug']]);?>" class="btn btn-sm btn-outline-dark">{{$car->registration}}</a></td>
                                         <td>{{$car->make}}</td>
                                         <td>{{$car->model}}</td>
                                         <td>{{$car->year}}</td>

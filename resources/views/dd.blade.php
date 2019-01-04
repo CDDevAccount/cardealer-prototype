@@ -1,7 +1,7 @@
       
    <!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />   ?-->
  <div align="center">  
-      <div ng-app="demoapp" ng-controller="democontroller" ng-init="loadMake()">  
+      <div ng-app="carapp" ng-controller="carcontroller" ng-init="loadMake()">  
          <select name="make" ng-model="make" class="form-control" ng-change="loadModel()">  
               <option value="">Select Manufacturer</option>  
               <option ng-repeat="make in makes" value="<% make.make %>"><% make.make %></option>  
@@ -12,25 +12,18 @@
               <option ng-repeat="model in models" value="<% model.model %>"><% model.model %></option>   
          </select>  
          <br />  
-         <select name="city" ng-model="city" class="form-control">  
-              <option value="">Select city</option>  
-              <option ng-repeat="city in cities" value="<% city.id %>">  
-                   <% city.name %>
-              </option>  
-         </select> 
-         <br />
-         <input type="text" name="pcode" class="form-control" ng-change="loadCars()">
+
       </div>  
  </div>  
 
 
 <script>  
-var app = angular.module('demoapp', [], function($interpolateProvider) {
+var app = angular.module('carapp', [], function($interpolateProvider) {
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
     });
 
-    app.controller("democontroller", function($scope, $http){  
+    app.controller("carcontroller", function($scope, $http){  
 
       $scope.loadMake = function(){  
          var url="{{url('get-make-list')}}";
@@ -47,7 +40,7 @@ var app = angular.module('demoapp', [], function($interpolateProvider) {
                 $scope.models = data;  
            })  
       }  
-
+/*
       $scope.loadCity = function(){  
            var url="{{url('get-city-list')}}?state_id="+$scope.state
            $http.get(url)  
@@ -63,7 +56,7 @@ var app = angular.module('demoapp', [], function($interpolateProvider) {
               $scope.cars = data;
           });
       } 
-  
+ */ 
  });  
 
  </script>

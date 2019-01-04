@@ -26,7 +26,7 @@ class CarController extends Controller
                  ->groupBy('make')
                  ->get();
             $marques=$marques->sortBy('make');
-            $cars=TblVehicle::orderBy('make')->paginate(10);
+            $cars=TblVehicle::orderBy('make')->paginate(12);
            // $cars=$cars->sortBy('make');
            return view('index',compact('cars'),compact(':qmarques'), compact('dealerscores'));
            // return response()->json($cars);
