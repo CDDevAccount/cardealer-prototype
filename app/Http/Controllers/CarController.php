@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TblCarScrape;
+use App\Models\TblVehicle;
 use App\Models\DealerTotal;
 use App\Models\LinkCarImage;
 
@@ -20,16 +21,15 @@ class CarController extends Controller
     {
         //
             $dealerscores=DealerTotal::all();
-            $marques= TblCarScrape::select('make')->distinct()->get();
-            $marques = DB::table('tbl_car_scrape')
+            $marques = DB::table('tbl_vehicles')
                  ->select('make', DB::raw('count(*) as total'))
                  ->groupBy('make')
                  ->get();
             $marques=$marques->sortBy('make');
-            $cars=TblCarScrape::where('dealer_post_code','>','')->orderBy('make')->paginate(10);
+            $cars=TblVehicle::orderBy('make')->paginate(10);
            // $cars=$cars->sortBy('make');
-          //  return view('index',compact('cars'),compact('marques'), compact('dealerscores'));
-            return response()->json($cars);
+           return view('index',compact('cars'),compact(':qmarques'), compact('dealerscores'));
+           // return response()->json($cars);
     }
 
     /**

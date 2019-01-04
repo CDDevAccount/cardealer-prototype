@@ -42,7 +42,8 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', 'cardealdb2.cexigolnlibn.eu-west-2.rds.amazonaws.com'),
+          #  'host' => env('DB_HOST', 'cardealdb2.cexigolnlibn.eu-west-2.rds.amazonaws.com'),
+            'host' => env('DB_HOST','eurocddbcluster.cluster-cqe9jyl0xyg8.eu-west-1.rds.amazonaws.com'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'cbdb'),
             'username' => env('DB_USERNAME', 'geronimo'),

@@ -16,9 +16,11 @@ Route::get('/', function () {
 });
 Route::resources([
     'car'=>'CarController',
+    'used-cars'=>'UsedCarsController',
     'dash'=>'DashController',
     'api'=>'APIController'
 ]);
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

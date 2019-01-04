@@ -21,12 +21,20 @@ class APIController extends Controller
                     ->select("name","id")
                     ->get();
         */
+<<<<<<< Updated upstream
             $makes = DB::table('tbl_car_scrape')
+=======
+       $makes = DB::table('tbl_car_scrape')
+>>>>>>> Stashed changes
                  ->select('make', DB::raw('count(*) as total'))
                  ->groupBy('make')
                  ->get();
         return response()->json($makes);
     }
+<<<<<<< Updated upstream
+=======
+    
+>>>>>>> Stashed changes
     public function getModelList(Request $request)
     {
 

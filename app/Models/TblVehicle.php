@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Wed, 12 Dec 2018 13:24:18 +0000.
+ * Date: Thu, 03 Jan 2019 14:49:40 +0000.
  */
 
 namespace App\Models;
@@ -42,6 +42,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property bool $detail_check
  * @property bool $mot_check
  * @property \Carbon\Carbon $mot_check_date
+ * @property string $slug
  * 
  * @property \App\Models\TblVehicleStatus $tbl_vehicle_status
  *
@@ -95,7 +96,8 @@ class TblVehicle extends Eloquent
 		'status',
 		'detail_check',
 		'mot_check',
-		'mot_check_date'
+		'mot_check_date',
+		'slug'
 	];
 
 	public function tbl_vehicle_status()
