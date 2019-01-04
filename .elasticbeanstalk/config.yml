@@ -1,0 +1,18 @@
+branch-defaults:
+  master:
+    environment: null
+    group_suffix: null
+global:
+  application_name: cardealer-beta
+  branch: null
+  default_ec2_keyname: mbp-ubuntu18
+  default_platform: PHP 7.2
+  default_region: eu-west-2
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: ebuser
+  repository: null
+  sc: git
+  workspace_type: Application
