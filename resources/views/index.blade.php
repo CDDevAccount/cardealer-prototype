@@ -1,4 +1,3 @@
-  Memory usage: 27%               IP address for eth0: 172.31.44.127
 @extends('layouts.app')
 
 @section('content')
