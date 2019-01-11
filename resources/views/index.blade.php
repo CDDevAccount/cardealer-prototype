@@ -12,6 +12,7 @@
                 </div>
                 <div class="card-body">
                     @include('dd')
+                    @include('vehiclefilter')
                     <div class='table-responsive'>
                             <table class="table table-striped ">
                             <thead>
@@ -19,7 +20,8 @@
                                         <th>Reg. No.</th>
                                         <th>Make</th>
                                         <th>Name</th>
-                                        <th colspan="2">Action</th>
+                                        <th>Price</th>
+                                        <th colspan="2">Price</th>
                                 </tr>
                             </thead>
                         	<tbody>
@@ -29,13 +31,14 @@
                                         <td>{{$car->make}}</td>
                                         <td>{{$car->model}}</td>
                                         <td>{{$car->year}}</td>
+                                        <td>£{{number_format($car->price,2)}}</td>
                                         <td>{{$car->model_type}}</td>
                                       </tr>
                                 @endforeach
                             </tbody>
                             </table>
 
-                        {{ $cars->links() }}
+                       
                 	</div>
             	</div>
         </div>

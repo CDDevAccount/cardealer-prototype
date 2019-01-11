@@ -4,7 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TblVehicles extends Model
+class Vehicle extends Model
 {
     //
+    use Filterable;
+
 }

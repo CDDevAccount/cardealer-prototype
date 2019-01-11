@@ -29,6 +29,7 @@ Route::get('geo/loc','GeoController@getLoc');
 Route::get('dependent-dropdown','APIController@index');
 Route::get('get-make-list','APIController@getMakeList');
 Route::get('get-model-list','APIController@getModelList');
+Route::get('get-vehicle-list','APIController@getVehicleList');
 #Route::get('get-city-list','APIController@getCityList');
 Route::get('get-city-list','APIController@getOutcodeList');
 Route::get('get-city-list','APIController@getOutcodeList');

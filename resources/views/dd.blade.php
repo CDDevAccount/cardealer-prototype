@@ -1,19 +1,7 @@
       
    <!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />   ?-->
  <div align="center">  
-      <div ng-app="carapp" ng-controller="carcontroller" ng-init="loadMake()">  
-         <select name="make" ng-model="make" class="form-control" ng-change="loadModel()">  
-              <option value="">Select Manufacturer</option>  
-              <option ng-repeat="make in makes" value="<% make.make %>"><% make.make %></option>  
-         </select>  
-         <br />  
-         <select name="model" ng-model="model" class="form-control" ng-change="loadCity()">  
-              <option value="">Select Model</option>  
-              <option ng-repeat="model in models" value="<% model.model %>"><% model.model %></option>   
-         </select>  
-         <br />  
-
-      </div>  
+ 
  </div>  
 
 

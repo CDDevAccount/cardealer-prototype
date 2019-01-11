@@ -58,7 +58,7 @@
 				    </tr>
 				    <tr>
 				        <th class="small text-muted pr-2" scope="row">Price</th>
-				        <td>{{$car->price}}</td>
+				        <td>£{{number_format($car->price,2)}}</td>
 				    </tr>
 				</table>
 		        </div>

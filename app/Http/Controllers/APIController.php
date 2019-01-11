@@ -56,8 +56,7 @@ class APIController extends Controller
     public function getVehicleList(Request $request)
     {
         $motors=DB::table("tbl_vehicles")
-                    ->select(*)
-                    ->where("make",$request->make)
+                    ->select('*')
                     ->where("model",$request->model)
                    // ->select("name","id")
                     ->get();
