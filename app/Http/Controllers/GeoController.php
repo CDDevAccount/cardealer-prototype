@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use DB;
-
+use App\Models\TblTown;
 /*
 RCM 04/12/2018 - For retrieving geolocation information
 
@@ -49,7 +49,7 @@ class GeoController extends Controller
 */
     public function getLoc(Request $request)
     {
-    dd($request);
+    // dd($request);
     	// Verify get data is valid postcode
     	if (preg_match('/^(([gG][iI][rR] {0,}0[aA]{2})|((([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y]?[0-9][0-9]?)|(([a-pr-uwyzA-PR-UWYZ][0-9][a-hjkstuwA-HJKSTUW])|([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y][0-9][abehmnprv-yABEHMNPRV-Y]))) {0,}[0-9][abd-hjlnp-uw-zABD-HJLNP-UW-Z]{2}))$/',$request->pcode)){
     		$postcode=$request->pcode;
@@ -107,5 +107,48 @@ class GeoController extends Controller
              ->whereIn('outcode', $outcodes)->get();
   		 return response()->json($dealers);
  
+    }
+/*
+***************** ROUTINE FOR FINDING DEALERS NEAR A CITY
+ public function getCity(Request $request)
+*/
+    public function getCity($town)
+    {
+
+        $city=TblTown::where('town_slug','=',$town)->first();
+ 
+        $long=$city->longitude;
+        $lat=$city->latitude;
+        $client = new \GuzzleHttp\Client();
+
+        // with the longitude and latitude, get the outcodes of the surrounding postcodes
+        $outcodes=array();
+
+        if ($long||$lat){
+            $res = $client->get('https://api.postcodes.io/outcodes?lon='.$long.'&lat='.$lat.'&radius=4999&limit=99');
+            if ($res->getStatusCode()===200){
+                $results=json_decode($res->getBody(),true);
+                foreach($results as $entry)
+                {
+                    if (is_array($entry)){
+                        foreach ($entry as $loc) {
+                            array_push($outcodes,$loc['outcode']);
+                        }
+                    }
+                }
+            };
+
+        }
+
+        $inclause="'".implode("','",$outcodes)."'";
+    //    $dealers = DB::table('tbl_dealer')
+    //        ->join('tbl_vehicles','tbl_vehicles.did','=','tbl_dealer.id')
+    //         ->select('name','tbl_dealer.phone','make','model','year','price')
+    //         ->whereIn('outcode', $outcodes)->get();
+
+             $dealers=DB::table('tbl_dealer')
+             ->select('name','tbl_dealer.phone')
+             ->whereIn('outcode', $outcodes)->get();
+         return response()->json($dealers);
     }
 }

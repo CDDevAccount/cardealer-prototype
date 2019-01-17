@@ -97,6 +97,8 @@ class TblVehicle extends Eloquent
 		'detail_check',
 		'mot_check',
 		'mot_check_date',
+		'longitude'
+		'latitude'
 		'slug'
 	];
 

@@ -34,14 +34,23 @@ class APIController extends Controller
     {
 
         $models = DB::table("tbl_vehicles")
-                    ->select('model', DB::raw('count(*) as total'))
-                    ->groupBy('model')
+                    ->select('model_family as model', DB::raw('count(*) as total'))
+                    ->groupBy('model_family')
                     ->where("make",$request->make)
                    // ->select("name","id")
                     ->get();
         return response()->json($models);
     }
 
+    public function getBodyList(Request $request)
+    {
+           $types= DB::table('tbl_vehicles')
+            ->select('model_type')
+            ->distinct()
+            ->orderby('model_type')
+            ->get();
+            return response()->json($types);
+    }
 
     public function getCityList(Request $request)
     {
@@ -57,7 +66,7 @@ class APIController extends Controller
     {
         $motors=DB::table("tbl_vehicles")
                     ->select('*')
-                    ->where("model",$request->model)
+                    ->where("model_family",$request->model)
                    // ->select("name","id")
                     ->get();
         return response()->json($motors);

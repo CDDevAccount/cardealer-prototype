@@ -6,12 +6,16 @@
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="card">
                 <div class="card-header">
-
-                                Welcome to Car Dealer's Cornucopia Quality of Cars
-
+					<div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true,"pageDots":false, "autoPlay":true,"prevNextButtons":false,"autoPlay":true }'>
+						@foreach($marques as $make)
+							<div class="carousel-cell">
+								<button type="button" class="btn btn-outline-dark">{{$make}}</button>
+							</div>
+						@endforeach
+					</div>
                 </div>
                 <div class="card-body">
-                    @include('dd')
+         
                     @include('vehiclefilter')
                     <div class='table-responsive'>
                             <table class="table table-striped ">

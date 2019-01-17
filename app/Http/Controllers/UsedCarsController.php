@@ -30,6 +30,9 @@ class UsedCarsController extends Controller
         if ($request->filled('model')){
             $vehicle->where('model',$request->model);
         }
+        if ($request->filled('model_family')){
+            $vehicle->where('model_family',$request->model_family);
+        }
         if ($request->filled('minprice')){
             $vehicle->where('price','>',$request->minprice);
         }
@@ -52,7 +55,7 @@ class UsedCarsController extends Controller
                  ->get();
             $marques=$marques->sortBy('make');
             $marques=$marques->pluck('make','make');
-        //    dd($marques);
+            
             /*
             $marques = DB::table('tbl_vehicles')
                  ->select('make', DB::raw('count(*) as total'))

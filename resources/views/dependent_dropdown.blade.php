@@ -17,8 +17,8 @@
                   <option ng-repeat="make in makes" value="<% make.make %>"><% make.make %></option>  
              </select>  
              <br />  
-             <select name="model" ng-model="model" class="form-control" ng-change="loadCity()">  
-                  <option value="">Select Model</option>  
+             <select name="model_family" ng-model="model" class="form-control" ng-change="loadCity()">  
+                  <option value="">Select Modelaa</option>  
                   <option ng-repeat="model in models" value="<% model.model %>"><% model.model %></option>   
              </select>  
              <br />  
