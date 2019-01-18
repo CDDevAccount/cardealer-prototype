@@ -10,6 +10,7 @@
     	</div>
     	@foreach($dealer->vehicles as $motor)	
     	<div class="col-sm-6 col-md-3 col-lg-2">
+    		<a href="<?= route('used-cars.show', ['used-cars' => $motor['slug']]);?>" class="btn btn-sm btn-outline-dark">
 	        <div class="card">
 	        	 <img class="card-img" src="{{ asset('images/cardealer-logo.png') }}" alt="{{ config('app.name', 'Car Dealer') }}">
 
@@ -23,13 +24,14 @@
 	 				Body:{{$motor->model_type}}<br>
 	 				Mileage:{{$motor->mileage}}<br>
 	 				Doors:{{$motor->doors}}<br>
-	 				Registration:{{$motor->registration}}<br>
+	 				Reg: {{$motor->registration}}<br>
 	           	</div>
 	           	<div class="card-footer  text-center">
-	        	 <img class="card-img" src="{{ asset('images/'.str_replace(' ','-',trim($motor->make)).'-logo.png') }}" alt="{{ config('app.name', 'Car Dealer') }}" style="max-width:100px; height:auto; max-height:100px;">
+	        	 <img class="card-img" src="{{ asset('images/'.str_replace(' ','-',trim($motor->make)).'-logo.png') }}" alt="{{$motor->model}}" style="max-width:100px; height:auto; max-height:100px;">
 	           	</div>
 	        	    
 	        </div>
+	        </a>
 	     </div>
         @endforeach
  @endforeach

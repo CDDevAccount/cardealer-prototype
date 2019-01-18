@@ -86,7 +86,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="http://dev.cardealer.co.uk/car">Cars</a>
+                    <a href="http://dev.cardealer.co.uk/used-cars/">Cars</a>
+                    <a href="http://dev.cardealer.co.uk/used-cars/in/norwich">Norwich Cars</a>
                     <a href="http://dev.cardealer.co.uk/dash">Dashboard</a>
                     <a href="http://www.cardealer.co.uk">Blog</a>
                 </div>

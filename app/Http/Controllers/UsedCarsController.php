@@ -20,6 +20,7 @@ class UsedCarsController extends Controller
     public function index(Request $request)
     {
       //  return Vehicle::filter($filters)->get()
+      //  dd($request);
         $request->flash();
         $vehicle= (new TblVehicle)->newQuery();
 
@@ -111,7 +112,7 @@ class UsedCarsController extends Controller
        //      ->select('name','tbl_dealer.phone','make','model','year','price')
         //     ->whereIn('outcode', $outcodes)->get();
              $dealers=TblDealer::with('vehicles')->whereIn('outcode', $outcodes)->get();
-             
+
            //  dd($dealers);
         // return response()->json($dealers);
              return view('dealeritem',compact('dealers'));

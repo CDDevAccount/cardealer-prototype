@@ -3,13 +3,12 @@
 @section('content')
 <div class="container">
 	<div class="row" >
-		<h1>{{$car->make}}</h1>
+	<h1>{{$car->make}}<img class="card-img" src="{{ asset('images/'.str_replace(' ','-',trim($car->make)).'-logo.png') }}" alt="{{$car->model}}" style="max-width:100px; height:auto; max-height:100px;">
+	<a href="{{ url()->previous() }}" class='btn btn-outline-dark'>Back</a>
+	</h1>
+ 
+	</div>
 
-		
-	</div>
-	<div class="row justify-content-left">
-		<a href="{{ url()->previous() }}" class='btn btn-outline-dark'>Back</a>
-	</div>
     <div class="row justify-content-center">
 
          <h2>{{$car->model}}</h2>
