@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 use App\Models\TblVehicle;
 use App\Models\LinkCarImage;
-
-use Illuminate\Support\Facades\DB;
+use App\Models\TblTown;
+use App\Models\TblDealer;
 
 class UsedCarsController extends Controller
 {
@@ -71,7 +73,50 @@ class UsedCarsController extends Controller
            // return $vehicle->get();
            // return response()->json($cars);
     }
+/*
+***************** ROUTINE FOR FINDING DEALERS NEAR A CITY
+ public function getCity(Request $request)
+*/
+    public function getIn($town)
+    {
 
+        $city=TblTown::where('town_slug','=',$town)->first();
+ 
+        $long=$city->longitude;
+        $lat=$city->latitude;
+        $client = new \GuzzleHttp\Client();
+
+        // with the longitude and latitude, get the outcodes of the surrounding postcodes
+        $outcodes=array();
+
+        if ($long||$lat){
+            $res = $client->get('https://api.postcodes.io/outcodes?lon='.$long.'&lat='.$lat.'&radius=4999&limit=99');
+            if ($res->getStatusCode()===200){
+                $results=json_decode($res->getBody(),true);
+                foreach($results as $entry)
+                {
+                    if (is_array($entry)){
+                        foreach ($entry as $loc) {
+                            array_push($outcodes,$loc['outcode']);
+                        }
+                    }
+                }
+            };
+
+        }
+
+        $inclause="'".implode("','",$outcodes)."'";
+     //   $dealers = DB::table('tbl_dealer')
+      //      ->join('tbl_vehicles','tbl_vehicles.did','=','tbl_dealer.id')
+       //      ->select('name','tbl_dealer.phone','make','model','year','price')
+        //     ->whereIn('outcode', $outcodes)->get();
+             $dealers=TblDealer::with('vehicles')->whereIn('outcode', $outcodes)->get();
+             
+           //  dd($dealers);
+        // return response()->json($dealers);
+             return view('dealeritem',compact('dealers'));
+
+    }
     /**
      * Display the specified resource.
      *

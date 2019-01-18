@@ -58,4 +58,8 @@ class TblDealer extends Eloquent
 		'dealer_email',
 		'outcode'
 	];
+    public function vehicles()
+    {
+        return $this->hasMany('App\Models\TblVehicle', 'did')->orderBy('make') ;
+    }
 }

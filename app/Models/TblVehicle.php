@@ -97,13 +97,15 @@ class TblVehicle extends Eloquent
 		'detail_check',
 		'mot_check',
 		'mot_check_date',
-		'longitude'
-		'latitude'
 		'slug'
 	];
 
 	public function tbl_vehicle_status()
 	{
 		return $this->belongsTo(\App\Models\TblVehicleStatus::class, 'status');
+	}
+	public function tbl_vehicle_dealer()
+	{
+		return $this->belongsTo(\App\Models\TblDealer::class,'did');
 	}
 }

@@ -20,7 +20,7 @@
                 <option value="">Select Body Type</option>  
                 <option ng-repeat="shape in shapes" value="<% shape.model_type %>" ><% shape.model_type %></option>   
           </select>  
-
+          
           <div class='col-lg-4 col-sm-6'>
             Min <input type="text" name="minprice" class="form-control" value="{{ old('minprice') }}">
             Max <input type="text" name="maxprice" class="form-control" value="{{ old('maxprice') }}">

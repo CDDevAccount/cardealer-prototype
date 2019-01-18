@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Vehicle extends Model
+class Dealer extends Model
 {
     //
     use Filterable;
@@ -13,7 +13,7 @@ class Vehicle extends Model
      */
     public function vehicles()
     {
-        return $this->belongsTo('App\Dealer','did');
+        return $this->hasMany('App\Vehicle', 'id', 'did');
     }
 
 }
