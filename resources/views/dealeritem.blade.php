@@ -16,18 +16,26 @@
 
 	            <div class="card-header">
 		           	<h4>{{$motor->year.' '.$motor->make}}</h4>
-	        		{{$motor->model}}<br>
-	        		£{{number_format($motor->price,2)}}
+		           	<dl>
+		           		<dt>{{$motor->model}}</dt>
+		           		<br>
+	        		<dd>£{{number_format($motor->price,2)}}</dd>
+	        		<dl>
 	            </div>
+
 	            <div class="card-body">
-	 				Colour:{{$motor->colour}}<br>
-	 				Body:{{$motor->model_type}}<br>
-	 				Mileage:{{$motor->mileage}}<br>
-	 				Doors:{{$motor->doors}}<br>
-	 				Reg: {{$motor->registration}}<br>
+	            	<dl align='left'>
+		 				<dt> Colour/Body:</dt>
+		 					<dd>{{$motor->doors}} Door {{$motor->colour}} {{$motor->model_type}}</dd>	 	
+		 				<dt>Mileage:</dt>
+		 					<dd>{{$motor->mileage}}</dd>
+		 				<dt>Reg:</dt> 
+		 					<dd>{{$motor->registration}}</dd>
+	 				</dl>
 	           	</div>
+	           
 	           	<div class="card-footer  text-center">
-	        	 <img class="card-img" src="{{ asset('images/'.str_replace(' ','-',trim($motor->make)).'-logo.png') }}" alt="{{$motor->model}}" style="max-width:100px; height:auto; max-height:100px;">
+	        	<img class="card-img" src="{{ asset('images/'.str_replace(' ','-',trim($motor->make)).'-logo.png') }}" alt="{{$motor->make}}" style="max-width:100px; height:auto; max-height:100px;">
 	           	</div>
 	        	    
 	        </div>

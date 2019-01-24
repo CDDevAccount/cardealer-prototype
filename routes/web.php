@@ -27,7 +27,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/cars', 'TblCarScrapeController')->name('cars');
 Route::get('geo/loc','GeoController@getLoc');
 Route::get('geo/city/{town}','GeoController@getCity');
+
 Route::get('used-cars/in/{town}','UsedCarsController@getIn');
+
 Route::get('dependent-dropdown','APIController@index');
 Route::get('get-make-list','APIController@getMakeList');
 Route::get('get-model-list','APIController@getModelList');
