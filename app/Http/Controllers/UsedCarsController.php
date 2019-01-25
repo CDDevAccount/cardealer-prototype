@@ -153,10 +153,10 @@ class UsedCarsController extends Controller
                 }
             }
         };
-
+        $towns = TblTown::where('longitude','>','')->orderBy('town', 'ASC')->get();
         $inclause="'".implode("','",$outcodes)."'";
         $dealers=TblDealer::with('vehicles')->whereIn('outcode', $outcodes)->get();
-        return view('dealeritem',compact('dealers'));
+        return view('dealeritem',compact('dealers'),compact('towns'));
 
     }
     public function getSearch(Request $request)
