@@ -3,9 +3,16 @@
 @section('content')
 <div class="container container-fluid text-center bg-grey">
 	<div class="row justify-content-center">
+		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCities" aria-expanded="false" aria-controls="collapseCities">
+     		Search by city
+  		</button>
+  		<div class="collapse" id="collapseCities">
+  			<div class="card card-body">
 		@foreach($towns as $town)
-			<a href='http://dev.cardealer.co.uk/used-cars/in/{{$town->town_slug}}'> {{$town->town}}</a>
+			<a href='/used-cars/in/{{$town->town_slug}}'> {{$town->town}}</a>
 		@endforeach
+			</div>
+		</div>
 		@foreach($dealers as $dealer)
 				<div class='col-lg-12 justify-content-center'>
 					<div class="jumbotron text-center">
