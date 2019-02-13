@@ -1,4 +1,4 @@
- <div align="center">  
+ <div align="center" >  
  	{!! Form::open(['url' => '/used-cars/','method' => 'get']) !!}
 
 
@@ -8,12 +8,14 @@
                 <option value="">Select Manufacturer</option>  
                 <option ng-repeat="make in makes" value="<% make.make %>"><% make.make %></option>  
           </select>  
-           <br />  
+          
+          <br />  
 
           <select name="model_family" ng-model="model" class="form-control" ng-change="loadCity()">  
                 <option value="">Select Model</option>  
                 <option ng-repeat="model in models" value="<% model.model %>"><% model.model %></option>   
           </select>  
+
            <br /> 
 
           <select name="model_type" ngModel="shape" class="form-control" ng-init="loadBodies()">  
@@ -21,26 +23,23 @@
                 <option ng-repeat="shape in shapes" value="<% shape.model_type %>" ><% shape.model_type %></option>   
           </select>  
           
-          <div class='col-lg-4 col-sm-6'>
-            Min <input type="text" name="minprice" class="form-control" value="{{ old('minprice') }}">
-            Max <input type="text" name="maxprice" class="form-control" value="{{ old('maxprice') }}">
-          </div>
-           
-          <div class='col-lg-4 col-sm-6'>
-             Fuel Type<input type="text" name="fuel" class = "form-control" value="{{ old('fuel') }}">
-          </div>
-
+          <br>
+             <input type="text" name="minprice" class="form-control" placeholder="Min Price" value="{{ old('minprice') }}">
+             <br>
+             <input type="text" name="maxprice" class="form-control" placeholder="Max Price" value="{{ old('maxprice') }}">
+           <br>
+             <input type="text" name="fuel" class = "form-control" placeholder="Fuel Type" value="{{ old('fuel') }}">
+          
       </div> 
-      <div class='row'>
-
-	 </div>
-	  <input type="submit" value="Submit">
+    <br>
+	  <button class="btn btn-md btn-outline-info" type="submit" value="Search Now">Search Now!</button>
 	 
 	 {!! Form::close() !!}
  </div>  
  
 <script>  
-var app = angular.module('carapp', [], function($interpolateProvider) {
+
+  var app = angular.module('carapp', [], function($interpolateProvider) {
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
     });

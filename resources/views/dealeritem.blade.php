@@ -1,18 +1,20 @@
-@extends('layouts.app')
+@extends('layouts.sideapp')
 
 @section('content')
 <div class="container container-fluid text-center bg-grey">
 	<div class="row justify-content-center">
-		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCities" aria-expanded="false" aria-controls="collapseCities">
-     		Search by city
-  		</button>
+		                          <!-- Use any element to open the sidenav -->
+        <h2><button type="button" class="btn btn-lg btn-outline-info"><span onclick="toggleNav()">&lsaquo;&lsaquo;   Search for Cars</span></button></h2>
+
+		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCities" aria-expanded="false" aria-controls="collapseCities">Search by city</button>
   		<div class="collapse" id="collapseCities">
   			<div class="card card-body">
-		@foreach($towns as $town)
-			<a href='/used-cars/in/{{$town->town_slug}}'> {{$town->town}}</a>
-		@endforeach
+				@foreach($towns as $town)
+					<a href='/used-cars/in/{{$town->town_slug}}'> {{$town->town}}</a>
+				@endforeach
 			</div>
 		</div>
+		
 		@foreach($dealers as $dealer)
 				<div class='col-lg-12 justify-content-center'>
 					<div class="jumbotron text-center">
