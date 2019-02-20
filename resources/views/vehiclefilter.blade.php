@@ -1,8 +1,10 @@
  <div align="center" >  
- 	{!! Form::open(['url' => '/used-cars/','method' => 'get']) !!}
+ 	{!! Form::open(['url' => '/search/','method' => 'get']) !!}
 
 
       <div ng-app="carapp" ng-controller="carcontroller" ng-init="loadMake()">  
+           <input type="text" name="postcode" class="form-control" placeholder="Post Code" value="{{ old('postcode') }}">
+           <br>
 
           <select name="make" ng-model="make" class="form-control" ng-change="loadModel()">  
                 <option value="">Select Manufacturer</option>  

@@ -15,6 +15,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $id
  * @property int $make_id
  * @property string $model
+ * @property string $slug
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $amended_at
  *
@@ -35,6 +36,7 @@ class TblModel extends Eloquent
 	protected $fillable = [
 		'make_id',
 		'model',
+		'slug,'
 		'amended_at'
 	];
 }

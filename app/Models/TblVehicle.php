@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Reliese\Database\Eloquent\Model as Eloquent;
+use Kyslik\ColumnSortable\Sortable;
 
 /**
  * Class TblVehicle
@@ -51,6 +52,13 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 class TblVehicle extends Eloquent
 {
 	public $timestamps = false;
+
+    public $sortable = ['id',
+                       'make',
+                       'model',
+                       'price',
+                        'created_at',
+                        'updated_at'];
 
 	protected $casts = [
 		'did' => 'int',

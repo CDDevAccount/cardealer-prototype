@@ -58,6 +58,7 @@
 				    <tr>
 				        <th class="small text-muted pr-2" scope="row">Price</th>
 				        <td>£{{number_format($car->price,2)}}</td>
+				        <td>@php  if ($car->status==1) echo 'sold'; @endphp</td>
 				    </tr>
 				</table>
 		        </div>
