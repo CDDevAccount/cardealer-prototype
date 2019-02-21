@@ -61,10 +61,7 @@ class SearchController extends Controller
 /// Sorts
 
         if($request->sort&&$request->direction){
-            // dd('fuckit');
             $vehicle->orderBy($request->sort,$request->direction);
-
-            
         }
 
         $marques = DB::table('tbl_vehicles')
@@ -173,7 +170,20 @@ class SearchController extends Controller
 
     }
 
+    /*
+        filter section to refine selected cars.
 
+
+     */
+        public function filter(Request $request,  $motors)
+        {
+            $motors=$motors->newQuery();
+            if ($request->has('model_type')) {
+                $motors->where('model_type', $request->input('model_type'));
+            }
+            dd($motors);
+            return $motors->get();
+        }
 
     public function getSearch(Request $request)
     {

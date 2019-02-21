@@ -28,8 +28,13 @@ Route::resources([
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('used-cars/{slug}','UsedCarsController@show');
-Route::get('used-cars/{town?}/{make?}', 'UsedCarsController@index');
+
+
+
+Route::get('used-cars/for-sale/{slug}', 'UsedCarsController@getForSale');
+Route::get('used-cars/{town?}/{make?}', 'UsedCarsController@show');
+
+Route::post('/search', 'SearchController@filter');
 
 Route::get('geo/loc','GeoController@getLoc');
 Route::get('geo/city/{town}','GeoController@getCity');

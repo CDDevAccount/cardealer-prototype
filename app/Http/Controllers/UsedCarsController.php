@@ -15,7 +15,7 @@ use App\Models\TblMake;
 class UsedCarsController extends Controller
 {
 /*
-    ***************** ROUTINE FOR FINDING DEALERS NEAR A CITY
+    ***************** ROUTINE FOR FINDING motors NEAR A CITY
      public function getCity(Request $request)
 */
     /**
@@ -26,7 +26,7 @@ class UsedCarsController extends Controller
     public function Index($town=null,$make=null)
     {
 
-//              DB::enableQueryLog();
+        //      DB::enableQueryLog();
         $fred=Request::get('sort');
         $barney=Request::get('direction');
       //  dd($town);
@@ -67,29 +67,35 @@ class UsedCarsController extends Controller
         if ($town&&$make){
 // if both town and make are set
  
-            $dealers= TblDealer::join('tbl_vehicles','tbl_vehicles.did','=','tbl_dealer.id')->where('tbl_vehicles.make','=',$make)->whereIn('tbl_dealer.outcode',$outcodes)->select('year','make','model','price','colour','fuel_type','doors','registration','mileage','slug')->paginate(60);
+            $motors= TblDealer::join('tbl_vehicles','tbl_vehicles.did','=','tbl_dealer.id')->where('tbl_vehicles.make','=',$make)->whereIn('tbl_dealer.outcode',$outcodes)->select('year','make','model','price','colour','fuel_type','doors','registration','mileage','slug')->paginate(60);
         }elseif($town){
 // if only town is set
  
-            $dealers= TblDealer::join('tbl_vehicles','tbl_vehicles.did','=','tbl_dealer.id')->whereIn('tbl_dealer.outcode',$outcodes)->select('year','make','model','price','colour','fuel_type','doors','registration','mileage','slug')->paginate(60);
+            $motors= TblDealer::join('tbl_vehicles','tbl_vehicles.did','=','tbl_dealer.id')->whereIn('tbl_dealer.outcode',$outcodes)->select('year','make','model','price','colour','fuel_type','doors','registration','mileage','slug')->paginate(60);
         }else{
 // if nothing is set
  
-       $dealers= TblDealer::join('tbl_vehicles','tbl_vehicles.did','=','tbl_dealer.id')->select('year','make','model','price','colour','fuel_type','doors','registration','mileage','slug')->paginate(60);
-    
+      // $motors= TblDealer::join('tbl_vehicles','tbl_vehicles.did','=','tbl_dealer.id')->select('year','make','model','price','colour','fuel_type','doors','registration','mileage','slug')->paginate(60);
+         $motors= TblVehicle::select('year','make','model','price','colour','fuel_type','doors','registration','mileage','slug')->paginate(60);
+       // $motors=TblVehicle::orderBy($fred, $barney);
+
+
         }
         $towns = TblTown::where('longitude','>','')->orderBy('town', 'ASC')->get();
         
-  //$query = DB::getQueryLog();
- // dd($query);
+        $query = DB::getQueryLog();
+/*
+  dd($query);
         if ($barney=='desc'){
-            $dealers->setCollection($dealers->sortByDesc($fred)); 
+            $motors->setCollection($motors->sortByDesc($fred)); 
         }else{
-            $dealers->setCollection($dealers->sortBy($fred)); 
+            $motors->setCollection($motors->sortBy($fred)); 
         }
-        
-       // $dealers->sortable()->paginate(24)  ;   
-        return view('dealeritem',compact('dealers','towns','city','checkedMake')); 
+        $query = DB::getQueryLog();
+  dd($query);
+  */  
+       // $motors->sortable()->paginate(24)  ;   
+        return view('dealeritem',compact('motors','towns','city','checkedMake')); 
     }
 
     public function getSearch(Request $request)
@@ -104,13 +110,30 @@ class UsedCarsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function sale($slug)
+    public function getForSale($slug=null)
     {
+        $showcar=TblVehicle::where('slug', $slug)->firstOrFail();
+        //$showcar=TblCarScrape::findOrFail($id);
+        $car_reg=$showcar->registration;
+        $images=LinkCarImage::where('registration','=', $car_reg)->get();
+         return view('viewcar', ['car' => $showcar,'images'=>$images]);
  
     }
 
+    /*
+        filter section to refine selected cars.
 
 
+     */
+        public function filter(Request $request, User $motors)
+        {
+            $motors=$motors->newQuery();
+            if ($request->has('model_type')) {
+                $motors->where('model_type', $request->input('model_type'));
+            }
+            dd($motors);
+            return $motors->get();
+        }
 
     /**
      * Display the specified resource.
@@ -118,19 +141,11 @@ class UsedCarsController extends Controller
      * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($town=null,$make=null)
     {
-       //  
-        $showcar=TblVehicle::where('slug', $slug)->firstOrFail();
-        //$showcar=TblCarScrape::findOrFail($id);
-        $car_reg=$showcar->registration;
-        $images=LinkCarImage::where('registration','=', $car_reg)->get();
-         return view('viewcar', ['car' => $showcar,'images'=>$images]);
 
 
-
-
-//              DB::enableQueryLog();
+    //          DB::enableQueryLog();
         $fred=Request::get('sort');
         $barney=Request::get('direction');
     //    dd($barney);
@@ -171,29 +186,32 @@ class UsedCarsController extends Controller
         if ($town&&$make){
 // if both town and make are set
  
-            $dealers= TblDealer::join('tbl_vehicles','tbl_vehicles.did','=','tbl_dealer.id')->where('tbl_vehicles.make','=',$make)->whereIn('tbl_dealer.outcode',$outcodes)->select('year','make','model','price','colour','fuel_type','doors','registration','mileage','slug')->paginate(60);
+            $motors= TblDealer::join('tbl_vehicles','tbl_vehicles.did','=','tbl_dealer.id')->where('tbl_vehicles.make','=',$make)->whereIn('tbl_dealer.outcode',$outcodes)->select('year','make','model','price','colour','fuel_type','doors','registration','mileage','slug')->paginate(60);
+
+
         }elseif($town){
 // if only town is set
  
-            $dealers= TblDealer::join('tbl_vehicles','tbl_vehicles.did','=','tbl_dealer.id')->whereIn('tbl_dealer.outcode',$outcodes)->select('year','make','model','price','colour','fuel_type','doors','registration','mileage','slug')->paginate(60);
+            $motors= TblDealer::join('tbl_vehicles','tbl_vehicles.did','=','tbl_dealer.id')->whereIn('tbl_dealer.outcode',$outcodes)->select('year','make','model','price','colour','fuel_type','doors','registration','mileage','slug')->paginate(60);
         }else{
 // if nothing is set
  
-       $dealers= TblDealer::join('tbl_vehicles','tbl_vehicles.did','=','tbl_dealer.id')->select('year','make','model','price','colour','fuel_type','doors','registration','mileage','slug')->paginate(60);
+            $motors= TblVehicle::select('year','make','model','price','colour','fuel_type','doors','registration','mileage','slug')->orderBy($fred, $barney)->paginate(60);
     
         }
         $towns = TblTown::where('longitude','>','')->orderBy('town', 'ASC')->get();
         
-  //$query = DB::getQueryLog();
- // dd($query);
+ // $query = DB::getQueryLog();
+//  dd($query);
         if ($barney=='desc'){
-            $dealers->setCollection($dealers->sortByDesc($fred)); 
+            $motors->setCollection($motors->sortByDesc($fred)); 
         }else{
-            $dealers->setCollection($dealers->sortBy($fred)); 
+            $motors->setCollection($motors->sortBy($fred)); 
         }
         
-       // $dealers->sortable()->paginate(24)  ;   
-        return view('dealeritem',compact('dealers','towns','city','checkedMake')); 
+       // $motors->sortable()->paginate(24)  ;   
+        return view('dealeritem',compact('motors','towns','city','checkedMake')); 
+
     }
 
 

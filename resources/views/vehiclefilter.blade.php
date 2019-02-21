@@ -38,7 +38,24 @@
 	 
 	 {!! Form::close() !!}
  </div>  
- 
+ <!--
+ <div>
+    {!! Form::open(['url' => '/search/','method' => 'post']) !!}
+              <select name="model_type" ngModel="shape" class="form-control" ng-init="loadBodies()">  
+                <option value="">Select Body Type</option>  
+                <option ng-repeat="shape in shapes" value="Hatchback" >Hatchback</option>  
+                <option ng-repeat="shape in shapes" value="Estate" >Estate</option>  
+                <option ng-repeat="shape in shapes" value="Coupe" >Coupe</option>  
+                <option ng-repeat="shape in shapes" value="Saloon" >Saloon</option>  
+                <option ng-repeat="shape in shapes" value="Van" >Van</option>  
+                <option ng-repeat="shape in shapes" value="MPV" >MPV</option>  
+                <option ng-repeat="shape in shapes" value="Convertible" >Convertible</option>  
+                <option ng-repeat="shape in shapes" value="SUV" >SUV</option>  
+              </select>  
+           <button class="btn btn-md btn-outline-info" type="submit" value="Search Now">Filter</button>
+    {!! Form::close() !!}
+  </div>
+-->
 <script>  
 
   var app = angular.module('carapp', [], function($interpolateProvider) {
