@@ -20,6 +20,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <style type="text/css">
       /* The side navigation menu */
     .sidenav {
@@ -128,9 +129,10 @@
                     </div>
                 </nav>
               <div id="mySidenav" class="sidenav">
+               
                  @include('vehiclefilter')
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
+          
               </div>
           
                 <main class="py-4">
@@ -158,6 +160,58 @@
       function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
       }
-      </script>
+
+  var app = angular.module('carapp', [], function($interpolateProvider) {
+        $interpolateProvider.startSymbol('<%');
+        $interpolateProvider.endSymbol('%>');
+    });
+
+    app.controller("carcontroller", function($scope, $http){  
+
+      $scope.loadMake = function(){  
+         var url="{{url('get-make-list')}}";
+         $http.get(url)  
+         .success(function(data){  
+              $scope.makes = data;  
+              console.log($scope.makes);
+              console.log('test_');
+         })  
+      }  
+
+      $scope.loadModel = function(){ 
+           var url="{{url('get-model-list')}}?make="+$scope.make; 
+           $http.get(url)  
+           .success(function(data){  
+                $scope.models = data;  
+           })  
+      }
+      $scope.loadBodies=function(){
+           var url="{{url('get-body-list')}}"; 
+           $http.get(url)  
+           .success(function(data){  
+                $scope.shapes = data;  
+           })  
+      }  
+/*
+      $scope.loadCity = function(){  
+           var url="{{url('get-city-list')}}?state_id="+$scope.state
+           $http.get(url)  
+           .success(function(data){  
+                $scope.cities = data;  
+           });  
+      } 
+      
+      $scope.loadCars=function(){
+          var url="{{url('get/loc')}}?pcode="+$scope.pcode
+          $http.get(url)
+          .success(function(data){
+              $scope.cars = data;
+          });
+      } 
+ */ 
+ });  
+
+ </script>
+
     </body>
 </html>
