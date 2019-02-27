@@ -14,6 +14,7 @@
         "bootstrap": "^4.2.1",
         "cross-env": "^5.1",
         "jquery": "^3.2",
+        "jquery-ui": "^1.12.1",
         "laravel-mix": "^4.0.13",
         "lodash": "^4.17.5",
         "popper.js": "^1.14.6",
@@ -29,8 +30,11 @@
         "flickity": "^2.1.2",
         "imagemin": "^6.1.0",
         "owl.carousel": "^2.3.4",
+        "slick-carousel": "^1.8.1",
         "vue-flickity": "^1.1.2",
         "vue-infinite-loading": "^2.4.3",
-        "vue-resource": "^1.5.1"
+        "vue-owl-carousel": "^2.0.3",
+        "vue-resource": "^1.5.1",
+        "vue-slick": "^1.1.15"
     }
 }

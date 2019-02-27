@@ -2,12 +2,35 @@
 
 @section('content')
 
+
 <div class="container container-fluid text-center bg-grey">
+<div class="row">
+    <div class='col-lg-12'>
+            <carousel :items=6 :autoplay="true" :nav="false" :loop="true" :dots="false" autopla>
+                <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/convertible.png">
+                <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/coupe.png">
+                <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/estate.png">
+                <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/hatchback.png">
+                <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/mpv.png">
+                <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/pickup.png">
+                <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/saloon.png">
+                <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/suv.png">
+                <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/panelvan.png">
+                <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/fourbyfour.png">
+        </carousel>
+    </div>
+</div>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/search">Search Latest Used Cars</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Results</li>
+  </ol>
+</nav>
 	<h1>Used {{$checkedMake->make ?? '' }} cars for sale  {{$city->town ?? ''}}</h1>
 	<button type="button" class="btn btn-sm btn-outline-info"><span onclick="toggleNav()">&lsaquo;&lsaquo;   Search for Cars</span></button>
 	<div align="right" >{!! $motors->appends(Request::except('page'))->render() !!}</div>	@sortablelink('make', 'Make')
 	@sortablelink('price', 'Price')
-
 
 	<div class="row justify-content-center">
 		                          <!-- Use any element to open the sidenav -->
