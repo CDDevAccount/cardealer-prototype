@@ -84,6 +84,11 @@ class UsedCarsController extends Controller
         $towns = TblTown::where('longitude','>','')->orderBy('town', 'ASC')->get();
         
         $query = DB::getQueryLog();
+        $marques = DB::table('tbl_makes')
+             ->select('make')
+             ->get();
+        $marques=$marques->sortBy('make');
+        $marques=$marques->pluck('make','make');
 /*
   dd($query);
         if ($barney=='desc'){
@@ -95,7 +100,7 @@ class UsedCarsController extends Controller
   dd($query);
   */  
        // $motors->sortable()->paginate(24)  ;   
-        return view('dealeritem',compact('motors','towns','city','checkedMake')); 
+        return view('dealeritem',compact('motors','towns','city','checkedMake','marques')); 
     }
 
     public function getSearch(Request $request)
@@ -201,7 +206,7 @@ class UsedCarsController extends Controller
         }
         $towns = TblTown::where('longitude','>','')->orderBy('town', 'ASC')->get();
         
-                $marques = DB::table('tbl_makes')
+        $marques = DB::table('tbl_makes')
              ->select('make')
              ->get();
         $marques=$marques->sortBy('make');

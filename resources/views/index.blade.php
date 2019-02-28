@@ -14,23 +14,23 @@
     <div class='col-lg-12'>
         <carousel id='makes' :items=10 :autoplay="true" :rtl="true" :nav="false" :loop="true" :dots="false" :slidespeed="200" :slide-by=5>
          @foreach($marques as $marque)
-            <img class="img-responsive" src='images/{{str_replace(' ','-',trim($marque))}}-logo.png' alt={{$marque}}>
+            <a href='search?make={{$marque}}'><img class="img-responsive" src='/images/{{str_replace(' ','-',trim($marque))}}-logo.png' alt={{$marque}}></a>
             
          @endforeach
         </carousel>
     </div>
     <div class='col-lg-12'>
             <carousel :items=6 :autoplay="true" :nav="false" :loop="true" :dots="false" :rtl="false" >
-                <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/convertible.png">
-                <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/coupe.png">
-                <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/estate.png">
-                <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/hatchback.png">
-                <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/mpv.png">
-                <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/pickup.png">
-                <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/saloon.png">
-                <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/suv.png">
-                <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/panelvan.png">
-                <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/fourbyfour.png">
+                <a href='/search?model_type=convertible'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/convertible.png"></a>
+                <a href='/search?model_type=coupe'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/coupe.png"></a>
+                <a href='/search?model_type=estate'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/estate.png"></a>
+                <a href='/search?model_type=hatchback'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/hatchback.png"></a>
+                <a href='/search?model_type=mpv'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/mpv.png"></a>
+                <a href='/search?model_type=pickup'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/pickup.png"></a>
+                <a href='/search?model_type=saloon'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/saloon.png"></a>
+                <a href='/search?model_type=suv'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/suv.png"></a>
+                <a href='/search?model_type=panelvan'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/panelvan.png"></a>
+                <a href='/search?model_type=fourbyfour'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/fourbyfour.png"></a>
         </carousel>
     </div>
 </div>
