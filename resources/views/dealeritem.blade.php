@@ -3,18 +3,25 @@
 @section('content')
 
 
-<div class="container container-fluid text-center bg-grey">
+<div class="container">
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/used-cars">Used Cars</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Results</li>
+  </ol>
+</nav>
 <div class="row">
-    <div class='col-lg-12'>
-        <carousel id='makes' :items=10 :autoplay="true" :rtl="true" :nav="false" :loop="true" :dots="false" :slidespeed="200" :slide-by=5 :responsive-class="true" :responsive="{0:{items:1,nav:false},600:{items:3,nav:true}}">
+    <div class='col-lg-12 img-rounded' style="background-color:#2e3192" >
+        <carousel id='makes' :items=10 :autoplay="true" :rtl="true" :nav="false" :loop="true" :dots="false" :slidespeed="200" :slide-by=5 :responsive-class="true" :responsive="{0:{items:2,nav:false},600:{items:4,nav:false},900:{items:6,nav:false},1200:{items:10,nav:false}}">
          @foreach($marques as $marque)
             <a href='/search?make={{$marque}}'><img class="img-responsive" src='/images/{{str_replace(' ','-',trim($marque))}}-logo.png' alt={{$marque}}></a>
             
          @endforeach
         </carousel>
     </div>
-    <div class='col-lg-12'>
-            <carousel :items=6 :autoplay="true" :nav="false" :loop="true" :dots="false" :responsive="{0:{items:1,nav:false},600:{items:3,nav:true}}">
+    <div class='col-lg-12 img-rounded' style="background-color:#D51317">
+            <carousel :items=6 :autoplay="true" :nav="false" :loop="true" :dots="false" :responsive="{0:{items:2,nav:false},600:{items:4,nav:false},900:{items:6,nav:false},1200:{items:8,nav:false}}">
                <a href='/search?model_type=convertible'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/convertible.png"></a>
                 <a href='/search?model_type=coupe'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/coupe.png"></a>
                 <a href='/search?model_type=estate'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/estate.png"></a>
@@ -28,21 +35,24 @@
         </carousel>
     </div>
 </div>
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/">Home</a></li>
-    <li class="breadcrumb-item"><a href="/search">Search Latest Used Cars</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Results</li>
-  </ol>
-</nav>
+<div class="row justify-content-center">
+	
 	<h1>Used {{$checkedMake->make ?? '' }} cars for sale  {{$city->town ?? ''}}</h1>
-	<button type="button" class="btn btn-sm btn-outline-info"><span onclick="toggleNav()">&lsaquo;&lsaquo;   Search for Cars</span></button>
-	<div align="right" >{!! $motors->appends(Request::except('page'))->render() !!}</div>	@sortablelink('make', 'Make')
-	@sortablelink('price', 'Price')
+
+</div>
 
 	<div class="row justify-content-center">
+		<div class='col-lg-2 col-md-4 col-sm-12 '>
+			<button type="button" class="btn btn-sm btn-outline-info"><span onclick="toggleNav()">&lsaquo;&lsaquo;   Search for Cars</span></button>
+		</div>
+
+		<div class='col-lg-6 col-sm-12 col-md-8' >{!! $motors->appends(Request::except('page'))->render() !!}</div>
+
+		<div class='col-lg-2 col-sm-12 col-md-4' >@sortablelink('make', 'Make')	@sortablelink('price', 'Price')</div>
 		                          <!-- Use any element to open the sidenav -->
-		
+    </div>
+
+		<div class="row justify-content-center">	
     	@foreach($motors as $motor)	
     	<div class="col-sm-6 col-md-4 col-lg-3">
     		<a href='/used-cars/for-sale/{{$motor->slug}}' class="btn btn-sm btn-outline-dark">
