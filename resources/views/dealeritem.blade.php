@@ -6,6 +6,14 @@
 <div class="container container-fluid text-center bg-grey">
 <div class="row">
     <div class='col-lg-12'>
+        <carousel id='makes' :items=10 :autoplay="true" :rtl="true" :nav="false" :loop="true" :dots="false" :slidespeed="200" :slide-by=5>
+         @foreach($marques as $marque)
+            <img class="img-responsive" src='/images/{{str_replace(' ','-',trim($marque))}}-logo.png' alt={{$marque}}>
+            
+         @endforeach
+        </carousel>
+    </div>
+    <div class='col-lg-12'>
             <carousel :items=6 :autoplay="true" :nav="false" :loop="true" :dots="false" autopla>
                 <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/convertible.png">
                 <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/coupe.png">

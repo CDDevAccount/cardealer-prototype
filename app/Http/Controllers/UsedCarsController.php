@@ -67,7 +67,7 @@ class UsedCarsController extends Controller
         if ($town&&$make){
 // if both town and make are set
  
-            $motors= TblDealer::join('tbl_vehicles','tbl_vehicles.did','=','tbl_dealer.id')->where('tbl_vehicles.make','=',$make)->whereIn('tbl_dealer.outcode',$outcodes)->select('year','make','model','price','colour','fuel_type','doors','registration','mileage','slug')->paginate(60);
+            $motors= TblDealer::join('tbl_vehicles','tbl_vehicles.did','=','tbl_dealer.id')->where('tbl_vehicles.make','=',$make)->where('tbl_vehicles.has_images','=',1)->whereIn('tbl_dealer.outcode',$outcodes)->select('year','make','model','price','colour','fuel_type','doors','registration','mileage','slug')->paginate(60);
         }elseif($town){
 // if only town is set
  
@@ -76,7 +76,7 @@ class UsedCarsController extends Controller
 // if nothing is set
  
       // $motors= TblDealer::join('tbl_vehicles','tbl_vehicles.did','=','tbl_dealer.id')->select('year','make','model','price','colour','fuel_type','doors','registration','mileage','slug')->paginate(60);
-         $motors= TblVehicle::select('year','make','model','price','colour','fuel_type','doors','registration','mileage','slug')->paginate(60);
+         $motors= TblVehicle::select('year','make','model','price','colour','fuel_type','doors','registration','mileage','slug')->where('tbl_vehicles.has_images','=',1)->paginate(60);
        // $motors=TblVehicle::orderBy($fred, $barney);
 
 
@@ -201,6 +201,11 @@ class UsedCarsController extends Controller
         }
         $towns = TblTown::where('longitude','>','')->orderBy('town', 'ASC')->get();
         
+                $marques = DB::table('tbl_makes')
+             ->select('make')
+             ->get();
+        $marques=$marques->sortBy('make');
+        $marques=$marques->pluck('make','make');
  // $query = DB::getQueryLog();
 //  dd($query);
         if ($barney=='desc'){
@@ -210,7 +215,7 @@ class UsedCarsController extends Controller
         }
         
        // $motors->sortable()->paginate(24)  ;   
-        return view('dealeritem',compact('motors','towns','city','checkedMake')); 
+        return view('dealeritem',compact('motors','towns','city','checkedMake','marques')); 
 
     }
 

@@ -12,7 +12,7 @@
 </nav>
 <div class="row">
     <div class='col-lg-12'>
-        <carousel id='makes' :items=10 :autoplay="true" :rtl="true" :nav="false" :loop="true" :dots="false" :slidespeed="200" :slideby=5>
+        <carousel id='makes' :items=10 :autoplay="true" :rtl="true" :nav="false" :loop="true" :dots="false" :slidespeed="200" :slide-by=5>
          @foreach($marques as $marque)
             <img class="img-responsive" src='images/{{str_replace(' ','-',trim($marque))}}-logo.png' alt={{$marque}}>
             
