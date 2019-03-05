@@ -76,8 +76,9 @@
         </nav>
 
         <main class="py-4">
-
+            <div id="app">
             @yield('content')
+            </div>
         </main>
     </div>
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>

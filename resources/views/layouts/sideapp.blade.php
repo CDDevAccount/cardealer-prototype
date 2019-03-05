@@ -27,7 +27,7 @@
       height: 100%; /* 100% Full-height */
       width: 0; /* 0 width - change this with JavaScript */
       position: fixed; /* Stay in place */
-      z-index: 1; /* Stay on top */
+      z-index: 10; /* Stay on top */
       top: 0; /* Stay at the top */
       left: 0;
       background-color: #2e3192; /* Black*/
@@ -130,7 +130,8 @@
                 </nav>
               <div id="mySidenav" class="sidenav">
                
-                 @include('vehiclefilter')
+                @include('vehiclefilter')
+                
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
           
               </div>
@@ -144,7 +145,11 @@
                </div>    
           
       </div>
-      <script type="text/javascript">
+
+
+
+      
+    <script type="text/javascript">
         function toggleNav(){
             var x = document.getElementById("mySidenav");
             if (x.style.width === "250px"){
@@ -175,8 +180,8 @@
          $http.get(url)  
          .success(function(data){  
               $scope.makes = data;  
-              console.log($scope.makes);
-              console.log('test_');
+          //    console.log($scope.makes);
+          //    console.log('test_');
          })  
       }  
 
@@ -188,10 +193,10 @@
            })  
       }
       $scope.loadBodies=function(){
-           var url="{{url('get-body-list')}}"; 
+           var url="{{url('get-body-list')}}?make="+$scope.make+"&model_family="+$scope.model; 
            $http.get(url)  
            .success(function(data){  
-                $scope.shapes = data;  
+                $scope.types = data;  
            })  
       }  
 /*
