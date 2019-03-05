@@ -44,10 +44,15 @@ class APIController extends Controller
 
     public function getBodyList(Request $request)
     {
+      //  dd($request);
            $types= DB::table('tbl_vehicles')
-            ->select('model_type')
-            ->distinct()
+            ->select('model_type', DB::raw('count(*) as total'))
+            ->groupBy('model_type')
+           
+           // ->where("model_family",$request->model_family)
             ->orderby('model_type')
+            ->where([['make','=',$request->make],['model_family','=',$request->model_family]])
+            // ->where("model_family",$request->model_type)
             ->get();
             return response()->json($types);
     }

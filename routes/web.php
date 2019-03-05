@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::resources([
     'car'=>'CarController',
     'search'=>'SearchController',

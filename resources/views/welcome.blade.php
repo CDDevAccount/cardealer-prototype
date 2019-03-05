@@ -92,10 +92,12 @@
                     <a href="/dash">Dashboard</a>
                     <a href="http://www.cardealer.co.uk">Blog</a>
                 </div>
-
+s
             </div>
 
         </div>
+
         <script src="{{asset('/js/app.js')}}" ></script>
+
     </body>
 </html>

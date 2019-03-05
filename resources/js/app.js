@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -20,8 +19,17 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 
 
 //Vue.component('example-component', require('./components/BaseTemplate.vue'));
-Vue.component('InfiniteLoading', require('vue-infinite-loading'));
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+//Vue.component('InfiniteLoading', require('vue-infinite-loading'));
+//Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('button-counter', {
+  data: function () {
+    return {
+      count: 0
+    }
+  },
+  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+})
+//Vue.component('welcome', require('./components/Welcome.vue').default);
 // Vue.component('flash',require('./components/Flash.vue'));
 import carousel from 'vue-owl-carousel';
 
@@ -29,6 +37,7 @@ export default {
     name: "carousel",
     components: { carousel },
 }
+
 Vue.component('carousel',require('vue-owl-carousel'));
 const app = new Vue({
     el: '#app'
