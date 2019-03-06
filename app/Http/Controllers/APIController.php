@@ -17,34 +17,72 @@ class APIController extends Controller
 
     public function getMakeList(Request $request)
     {
-      /*  $countries = DB::table("countries")
-                    ->select("name","id")
-                    ->get();
-        */
+        $value=false;
+        $dealers=false;
+        if ($request->session()->has('dealers')) {
 
-       $makes = DB::table('tbl_vehicles')
+            $value = session('dealers');
+            $dealers=(is_array($value)?$value:false);
+
+        }
+
+        if (!$dealers){
+          $makes = DB::table('tbl_vehicles')
                 ->select('make', DB::raw('count(*) as total'))
                  ->groupBy('make')
                  ->get();
+        }else{
+            $makes = DB::table('tbl_vehicles')
+                ->select('make', DB::raw('count(*) as total'))
+                ->wherein('did',$dealers)
+                 ->groupBy('make')
+                 ->get();           
+        }
+
         return response()->json($makes);
     }
 
     
     public function getModelList(Request $request)
     {
+        $value=false;
+        $dealers=false;
+        if ($request->session()->has('dealers')) {
 
-        $models = DB::table("tbl_vehicles")
-                    ->select('model_family as model', DB::raw('count(*) as total'))
-                    ->groupBy('model_family')
-                    ->where("make",$request->make)
-                   // ->select("name","id")
-                    ->get();
+            $value = session('dealers');
+            $dealers=(is_array($value)?$value:false);
+
+        }
+
+        if (!$dealers){
+            $models = DB::table("tbl_vehicles")
+                        ->select('model_family as model', DB::raw('count(*) as total'))
+                        ->groupBy('model_family')
+                        ->where("make",$request->make)
+                       // ->select("name","id")
+                        ->get();
+        }else{
+
+             $models = DB::table("tbl_vehicles")
+                        ->select('model_family as model', DB::raw('count(*) as total'))
+                        ->groupBy('model_family')
+                        ->where("make",$request->make)
+                        ->whereIn('did',$dealers)
+                        ->get();           
+        }
         return response()->json($models);
     }
 
     public function getBodyList(Request $request)
     {
-      //  dd($request);
+        $value=false;
+        $dealers=false;
+        if ($request->session()->has('dealers')) {
+
+            $value = session('dealers');
+            $dealers=(is_array($value)?$value:false);
+
+        }
            $types= DB::table('tbl_vehicles')
             ->select('model_type', DB::raw('count(*) as total'))
             ->groupBy('model_type')
@@ -52,6 +90,7 @@ class APIController extends Controller
            // ->where("model_family",$request->model_family)
             ->orderby('model_type')
             ->where([['make','=',$request->make],['model_family','=',$request->model_family]])
+            ->whereIn('did',$dealers)
             // ->where("model_family",$request->model_type)
             ->get();
             return response()->json($types);

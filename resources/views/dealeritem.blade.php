@@ -9,7 +9,7 @@
     <li class="breadcrumb-item"><a href="/">Home</a></li>
     <li class="breadcrumb-item"><a href="/used-cars">Used Cars</a></li>
     <li class="breadcrumb-item active" aria-current="page">Results</li>
-    <li><button-counter></button-counter></li>
+    <li class="breadcrumb-item"><button-counter  type="button" class="btn btn-sm btn-outline-info"></button-counter></li>
   </ol>
 </nav>
     <div class="row" style="height: 80px;">
