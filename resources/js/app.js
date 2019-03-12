@@ -29,6 +29,9 @@ Vue.component('button-counter', {
   },
   template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
 })
+
+import circleslider from 'vue-circle-slider';
+Vue.use(require('vue-circle-slider'));
 //Vue.component('welcome', require('./components/Welcome.vue').default);
 // Vue.component('flash',require('./components/Flash.vue'));
 import carousel from 'vue-owl-carousel';
@@ -36,9 +39,13 @@ import carousel from 'vue-owl-carousel';
 export default {
     name: "carousel",
     components: { carousel },
+    	name:"circleslider",
+	components:{circleslider},
 }
 
 Vue.component('carousel',require('vue-owl-carousel'));
+
+
 const app = new Vue({
     el: '#app'
 });
