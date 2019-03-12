@@ -82,7 +82,7 @@ class APIController extends Controller
             $value = session('dealers');
             $dealers=(is_array($value)?$value:false);
 
-        }
+        }elseif($dealers){
            $types= DB::table('tbl_vehicles')
             ->select('model_type', DB::raw('count(*) as total'))
             ->groupBy('model_type')
@@ -92,7 +92,16 @@ class APIController extends Controller
             ->where([['make','=',$request->make],['model_family','=',$request->model_family]])
             ->whereIn('did',$dealers)
             // ->where("model_family",$request->model_type)
+            ->get();            
+        }else{
+           $types= DB::table('tbl_vehicles')
+            ->select('model_type', DB::raw('count(*) as total'))
+            ->groupBy('model_type')
+            ->orderby('model_type')
+            ->where([['make','=',$request->make],['model_family','=',$request->model_family]])
             ->get();
+        }
+
             return response()->json($types);
     }
 

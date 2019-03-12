@@ -12,6 +12,7 @@
     <div class="row justify-content-center">
 
          <h2>{{$car->model}}</h2>
+         <h3>{{$car->tbl_vehicle_dealer->name}}</h3>
 
     </div>
 <div class='row'>
@@ -86,8 +87,8 @@
 		        <div class="card-body">
 				<table>
 				    <tr>
-				        <th class="small text-muted pr-2" scope="row">Engine Type</th>
-				        <td>{{$car->engine_type}}</td>
+				        <th class="small text-muted pr-2" scope="row">Emmissions</th>
+				        <td>{{$car->co2}}</td>
 				    </tr>
 				    <tr>
 				        <th class="small text-muted pr-2" scope="row">Fuel Type</th>
@@ -107,6 +108,24 @@
 		        </div>
 		      </div>
 		    </div>
+		    <div class="card">
+		      <div class="card-header">
+		        <a class="card-link" data-toggle="collapse" href="#collapseFour">
+		          Dealer Information
+		        </a>
+		      </div>
+		      <div id="collapseFour" class="collapse" data-parent="#accordion">
+		        <div class="card-body">
+		        	{{$car->tbl_vehicle_dealer->name}}<br>
+		        	{{$car->tbl_vehicle_dealer->address1}}<br>
+		        	{{$car->tbl_vehicle_dealer->address2}}<br>
+		        	{{$car->tbl_vehicle_dealer->city}}<br>
+		        	{{$car->tbl_vehicle_dealer->postcode}}<br>
+		        	{{$car->tbl_vehicle_dealer->phone}}
+		        </div>
+	    	  </div>
+	    	</div>
+
 		</div>	
     </div>
     <div class='col-sm-12 col-md-6 col-lg-6'>
@@ -124,7 +143,7 @@
 			           <img class="d-block img-fluid" src="http://media.cardealer.co.uk/{{$photo->registration}}/{{ $photo->imagename }}" alt="{{ $car->model }}">
 			              <div class="carousel-caption d-none d-md-block">
 			                 <h3>{{ $car->model }}</h3>
-			                 <p>image description</p>
+			                 <p>{{$car->phone}}</p>
 			              </div>
 			       </div>
 			    @endforeach

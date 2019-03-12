@@ -3,7 +3,7 @@
 
 
       <div ng-app="carapp" ng-controller="carcontroller" ng-init="loadMake()">  
-
+<input type="range" min="0" max="80" v-model="form.workHours"/>
            <input type="text" name="postcode" class="form-control" placeholder="Post Code" value="{{ old('postcode') }}">
          
            <br>
