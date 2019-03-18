@@ -10,7 +10,16 @@
     <li class="breadcrumb-item"><a href="/used-cars">Used Cars</a></li>
     <li class="breadcrumb-item active" aria-current="page">Results</li>
     <li class="breadcrumb-item"><button-counter  type="button" class="btn btn-sm btn-outline-info"></button-counter></li>
-    <circle-slider v-model="sliderValue"></circle-slider>
+    <circle-slider   
+  :side="150"
+  :min="0"
+  :max="10000"
+  :step-size="100"
+  :circle-width-rel="20"
+  :progress-width-rel="10"
+  @touchmove="$refs.input.blur()"
+  :knob-radius="10" v-model="val1"></circle-slider>
+  <input ref="input" type="number" v-model.number="val1" />
 
   </ol>
 </nav>
@@ -45,7 +54,7 @@
 <div class="row justify-content-center">
 
 	<h1>Used {{$checkedMake->make ?? '' }} cars for sale  {{$city->town ?? ''}}</h1>
-
+	<v-select multiple v-model="selected" :options="['foo','bar']"></v-select>
 </div>
 
 	<div class="row justify-content-center">

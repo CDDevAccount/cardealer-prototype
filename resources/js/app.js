@@ -30,23 +30,52 @@ Vue.component('button-counter', {
   template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
 })
 
+
+import vSelect from 'vue-select'
+Vue.component('v-select', vSelect)
+import Swatches from 'vue-swatches'
+
 import circleslider from 'vue-circle-slider';
 Vue.use(require('vue-circle-slider'));
 //Vue.component('welcome', require('./components/Welcome.vue').default);
+Vue.component('swatch', require('./components/SwatchTemplate.vue').default);
 // Vue.component('flash',require('./components/Flash.vue'));
 import carousel from 'vue-owl-carousel';
+import Geolocation from 'vue-component-geolocation';
 
-export default {
-    name: "carousel",
-    components: { carousel },
-    	name:"circleslider",
-	components:{circleslider},
-}
 
 Vue.component('carousel',require('vue-owl-carousel'));
 
 
-const app = new Vue({
-    el: '#app'
-});
+  // Import the styles too, globally
+  import "vue-swatches/dist/vue-swatches.min.css"
 
+export default {
+    name: "carousel",
+    components: { carousel },
+    name:"circleslider",
+    components:{circleslider},
+    data: {
+      val1: 10
+    },
+    name: "swatches",
+    components: { Swatches }, 
+    data () {
+      return {
+        color: '#2e3192',
+        colors: ['#F64272', '#F6648B', '#F493A7', '#F891A6', '#FFCCD5', '']
+      }
+    }
+}
+
+const app = new Vue({
+    el: '#app',
+    data: {
+      selected: [],
+      makes :[],
+      bodies : [],
+      colors:[],
+      color : '#2e3192',
+      colors: ['#F64272', '#F6648B', '#F493A7', '#F891A6', '#FFCCD5', '']
+    }
+});

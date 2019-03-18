@@ -115,7 +115,7 @@ class UsedCarsController extends Controller
      */
     public function getForSale($slug=null)
     {
-        $showcar=TblVehicle::where('slug', $slug)->firstOrFail();
+        $showcar=TblVehicle::with('tbl_vehicle_dealer')->where('slug', $slug)->firstOrFail();
         //$showcar=TblCarScrape::findOrFail($id);
         $car_reg=$showcar->registration;
         $images=LinkCarImage::where('registration','=', $car_reg)->get();

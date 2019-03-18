@@ -1,9 +1,13 @@
  <div align="center" >  
+  
+ 
+
+
  	{!! Form::open(['url' => '/search/','method' => 'get']) !!}
 
 
       <div ng-app="carapp" ng-controller="carcontroller" ng-init="loadMake()">  
-<input type="range" min="0" max="80" v-model="form.workHours"/>
+
            <input type="text" name="postcode" class="form-control" placeholder="Post Code" value="{{ old('postcode') }}">
          
            <br>
@@ -21,7 +25,7 @@
           </select>  
 
            <br /> 
-
+          
           <select name="model_type" ng-model="Ttype" class="form-control" >  
                 <option value="">Select Body Type</option>  
                 <option ng-repeat="type in types" value="<% type.model_type %>" ><% type.model_type %>(<% type.total %>)</option>   

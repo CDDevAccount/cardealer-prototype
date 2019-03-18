@@ -11,6 +11,28 @@
       </ol>
     </nav>
 
+
+    {!! Form::open(['url' => '/search/','method' => 'post']) !!}
+    <div class='row'>
+            <div class='col-lg-3 col-md-4 col-sm-6'>
+                <v-select multiple v-model="makes" placeholder="Select Makes..." :options="['Abarth', 'Alfa Romeo', 'Alpine ', 'Aston Martin', 'Audi', 'Austin ', 'BMW', 'Bentley', 'Caterham', 'Cadillac', 'Chevrolet', 'Chrysler', 'Citroen', 'Dacia', 'Daewoo', 'Daihatsu', 'Daimler', 'Dodge', 'Ds', 'Ferrari', 'Fiat', 'Ford', 'Great Wall', 'Honda', 'Hummer ', 'Hyundai', 'Infiniti', 'Isuzu', 'Iveco', 'Jaguar', 'Jeep', 'Kia', 'LDV ', 'Lamborghini', 'Land Rover', 'Lexus', 'Lotus', 'MG', 'MINI', 'Maserati', 'Maybach ', 'Mazda', 'McLaren', 'Mercedes-Benz', 'Mitsubishi', 'Morgan ', 'Nissan', 'Noble ', 'Peugeot', 'Porsche', 'Proton', 'Reliant ', 'Renault', 'Rolls-Royce', 'Rover', 'Saab', 'Seat', 'Skoda', 'Smart', 'Ssangyong', 'Subaru', 'Suzuki', 'TVR', 'Tesla', 'Toyota', 'Vauxhall', 'Volkswagen', 'Volvo']"></v-select>
+                 <input type="hidden" v-model="makes" name="makes" />
+            </div>
+    
+            <div class='col-lg-3 col-md-4 col-sm-6'>
+
+                 <v-select label="Body Shapes" multiple v-model="bodies" placeholder="Select Type..." :options="['4X4','Convertible','Coupe','Estate','Hatchback','Minibus','MPV','Pickup','Saloon','SUV','Van']"></v-select>
+                 <input type="hidden" v-model="bodies" name="bodies" />
+            </div>
+            <div class="form__input">
+                <swatch></swatch>
+            </div>
+            <div class='col-lg-3 col-md-4 col-sm-6'>
+                 <button class="btn btn-md btn-outline-info" type="submit" value="Search Now">Search Now!</button>
+            </div>
+
+     {!! Form::close() !!}
+ </div>
     <div class="row" style="height: 80px;">
         <div class='col-lg-12'>
             <carousel id='makes' :items=10 :autoplay="true" :rtl="true" :nav="false" :loop="true" :dots="false" :slidespeed="200" :slide-by=5 :responsive-class="true" :responsive="{0:{items:3,nav:false},600:{items:4,nav:false},900:{items:6,nav:false},1200:{items:10,nav:false}}">
@@ -34,7 +56,7 @@
                     <a href='/search?model_type=saloon'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/saloon.png"></a>
                     <a href='/search?model_type=suv'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/suv.png"></a>
                     <a href='/search?model_type=panelvan'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/panelvan.png"></a>
-                    <a href='/search?model_type=fourbyfour'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/fourbyfour.png"></a>
+                    <a href='/search?model_type=4X4'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/fourbyfour.png"></a>
             </carousel>
         </div>
     </div>

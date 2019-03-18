@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
+
 
 use App\Models\TblVehicle;
 use App\Models\LinkCarImage;
@@ -27,7 +29,6 @@ class SearchController extends Controller
     {
 
         $request->flash();
-
         $vehicle= (new TblVehicle)->newQuery();
         $dealers='all';
 // Wheres
@@ -92,20 +93,23 @@ class SearchController extends Controller
         if($request->sort&&$request->direction){
             $vehicle->orderBy($request->sort,$request->direction);
         }
-
-        $marques = DB::table('tbl_vehicles')
-             ->select('make', DB::raw('count(*) as total'))
-             
-             ->groupBy('make')
-           //  ->wherein('did',$dealers)
-             ->get();
-        $marques=$marques->sortBy('make');
-        $marques=$marques->pluck('make','make');
-        
+        // return response()->json($cars);
+        if (Cache::has('makes')) {
+               $marques= Cache::store('file')->get('makes');
+            }else{
+                $marques = DB::table('tbl_vehicles')
+                 ->select('make', DB::raw('count(*) as total'))
+                 ->groupBy('make')
+                 ->get();
+                $marques=$marques->sortBy('make');
+                $marques=$marques->pluck('make','make');
+                Cache::store('file')->put('makes', $marques, 10);
+            }
+            
+       
         $cars=$vehicle->paginate(24);
         return view('index',compact('cars','marques','dealers'));
     }
-
 
 
 
@@ -260,14 +264,39 @@ class SearchController extends Controller
 
 
      */
-        public function filter(Request $request,  $motors)
+        public function filter(Request $request)
         {
-            $motors=$motors->newQuery();
-            if ($request->has('model_type')) {
-                $motors->where('model_type', $request->input('model_type'));
+            $dealers=false;
+         $vehicle= (new TblVehicle)->newQuery();
+       
+        if ($request->filled('makes')){
+            $makes=explode(',',$request->makes);
+            $vehicle->whereIn('make',$makes);
+
+        }
+      //   dd($makes);
+        if ($request->filled('bodies')){
+             $bodies=explode(',',$request->bodies);
+            $vehicle->whereIn('model_type',$bodies);
+
+        }
+
+
+        $cars=$vehicle->paginate(12);
+            // return response()->json($cars);
+            if (Cache::has('makes')) {
+               $marques= Cache::store('file')->get('makes');
+            }else{
+                $marques = DB::table('tbl_vehicles')
+                 ->select('make', DB::raw('count(*) as total'))
+                 ->groupBy('make')
+                 ->get();
+                $marques=$marques->sortBy('make');
+                $marques=$marques->pluck('make','make');
+                Cache::store('file')->put('makes', $marques, 10);
             }
-            dd($motors);
-            return $motors->get();
+            
+        return view('index',compact('cars','marques','dealers'));
         }
 
     public function getSearch(Request $request)
