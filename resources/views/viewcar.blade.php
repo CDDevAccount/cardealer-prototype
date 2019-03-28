@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.cardealerbase')
 
 @section('content')
 <div class="container">
@@ -10,10 +10,12 @@
 	</div>
 
     <div class="row justify-content-center">
-
-         <h2>{{$car->model}}</h2>
+    	<div class='col-lg-6'>
+         	<h2>{{$car->model}}</h2>
+     	</div>
+     	<div class='col-lg-6'>
          <h3>{{$car->tbl_vehicle_dealer->name}}</h3>
-
+     	</div>
     </div>
 <div class='row'>
     <div class='col-sm-12 col-md-6 col-lg-6'>
