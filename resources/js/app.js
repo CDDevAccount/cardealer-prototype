@@ -19,8 +19,9 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 
 
 //Vue.component('example-component', require('./components/BaseTemplate.vue'));
-//Vue.component('InfiniteLoading', require('vue-infinite-loading'));
-//Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('InfiniteLoading', require('vue-infinite-loading').default);
+
 Vue.component('button-counter', {
   data: function () {
     return {
@@ -39,6 +40,7 @@ import circleslider from 'vue-circle-slider';
 Vue.use(require('vue-circle-slider'));
 //Vue.component('welcome', require('./components/Welcome.vue').default);
 Vue.component('swatch', require('./components/SwatchTemplate.vue').default);
+
 // Vue.component('flash',require('./components/Flash.vue'));
 import carousel from 'vue-owl-carousel';
 import Geolocation from 'vue-component-geolocation';
@@ -75,6 +77,7 @@ const app = new Vue({
       makes :[],
       bodies : [],
       colors:[],
+      fuels:[],
       color : '#2e3192',
       colors: ['#F64272', '#F6648B', '#F493A7', '#F891A6', '#FFCCD5', '']
     }

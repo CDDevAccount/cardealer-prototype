@@ -29,6 +29,7 @@
         "ajv": "^6.9.2",
         "flickity": "^2.2.0",
         "imagemin": "^6.1.0",
+        "laravel-vue-pagination": "^2.3.0",
         "owl.carousel": "^2.3.4",
         "slick-carousel": "^1.8.1",
         "vue-circle-slider": "^1.0.2",

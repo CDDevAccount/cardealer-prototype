@@ -8,55 +8,62 @@
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/">Home</a></li>
     <li class="breadcrumb-item"><a href="/used-cars">Used Cars</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Results</li>
-    <li class="breadcrumb-item"><button-counter  type="button" class="btn btn-sm btn-outline-info"></button-counter></li>
-    <circle-slider   
-  :side="150"
-  :min="0"
-  :max="10000"
-  :step-size="100"
-  :circle-width-rel="20"
-  :progress-width-rel="10"
-  @touchmove="$refs.input.blur()"
-  :knob-radius="10" v-model="val1"></circle-slider>
-  <input ref="input" type="number" v-model.number="val1" />
-
-  </ol>
+    <li class="breadcrumb-item" aria-current="page">Results</li>
+	 <li class="breadcrumb-item active" aria-current="page">
+            <a data-toggle="collapse" href="#collapseSearch" role="button" aria-expanded="false" aria-controls="collapseExample">View Filter</a>
+        </li>  </ol>
 </nav>
-    <div class="row" style="height: 80px;">
-        <div class='col-lg-12'>
+    {!! Form::open(['url' => '/filter/','method' => 'post']) !!}
+    <div class="collapse" id="collapseSearch">
 
-            <carousel id='makes' :items=10 :autoplay="true" :rtl="true" :nav="false" :loop="true" :dots="false" :slidespeed="200" :slide-by=5 :responsive-class="true" :responsive="{0:{items:3,nav:false},600:{items:4,nav:false},900:{items:6,nav:false},1200:{items:10,nav:false}}">
-             @foreach($marques as $marque)
-                <a href='/search?make={{$marque}}'><img class="img-responsive" src='/images/{{str_replace(' ','-',trim($marque))}}-logo.png' alt={{$marque}}></a>
-                
-             @endforeach
-            </carousel>
+        <div class='row'>
+
+                <div class='col-lg-2 col-md-4 col-sm-6'>
+
+                        <v-select multiple v-model="makes" placeholder="Makes..." :options="['Abarth', 'Alfa Romeo', 'Alpine ', 'Aston Martin', 'Audi', 'Austin ', 'BMW', 'Bentley', 'Caterham', 'Cadillac', 'Chevrolet', 'Chrysler', 'Citroen', 'Dacia', 'Daewoo', 'Daihatsu', 'Daimler', 'Dodge', 'Ds', 'Ferrari', 'Fiat', 'Ford', 'Great Wall', 'Honda', 'Hummer ', 'Hyundai', 'Infiniti', 'Isuzu', 'Iveco', 'Jaguar', 'Jeep', 'Kia', 'LDV ', 'Lamborghini', 'Land Rover', 'Lexus', 'Lotus', 'MG', 'Mini', 'Maserati', 'Maybach ', 'Mazda', 'McLaren', 'Mercedes-Benz', 'Mitsubishi', 'Morgan ', 'Nissan', 'Noble ', 'Peugeot', 'Porsche', 'Proton', 'Reliant ', 'Renault', 'Rolls-Royce', 'Rover', 'Saab', 'Seat', 'Skoda', 'Smart', 'Ssangyong', 'Subaru', 'Suzuki', 'TVR', 'Tesla', 'Toyota', 'Vauxhall', 'Volkswagen', 'Volvo']"></v-select>
+                         <input type="hidden" v-model="makes" name="makes" />
+
+                </div>
+        
+                <div class='col-lg-2 col-md-4 col-sm-6'>
+
+
+                         <v-select label="Body" multiple v-model="bodies" placeholder="Body..." :options="['4X4','Convertible','Coupe','Estate','Hatchback','Minibus','MPV','Pickup','Saloon','SUV','Van']"></v-select>
+                         <input type="hidden" v-model="bodies" name="bodies" />
+
+                </div>
+            
+                <div class='col-lg-2 col-md-3 col-sm-4'>
+
+                        <v-select multiple v-model="fuels" placeholder="Fuel..." :options="['Diesel','Diesel Hybrid','Electric','Flex','Petrol','Petrol Hybrid']"></v-select>
+                        <input type="hidden" v-model="fuels" name="fuels" />
+
+                </div>
+                <div class='col-lg-1 col-md-2 col-sm-3'>
+
+                        <swatch></swatch>
+
+                </div>
+                <div class='col-lg-2 col-md-3 col-sm-4'>
+ 
+
+                     <button class="btn btn-md btn-outline-info" type="submit" value="Search Now">Search >></button>
+
+                </div>
+
+        
         </div>
     </div>
-    <div class="row">
+  {!! Form::close() !!}
 
-        <div class='col-lg-12 img-rounded' >
-                <carousel :items=6 :autoplay="true" :nav="false" :loop="true" :dots="false" :responsive="{0:{items:3,nav:false},600:{items:4,nav:false},900:{items:6,nav:false},1200:{items:8,nav:false}}">
-                   <a href='/search?model_type=convertible'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/convertible.png"></a>
-                    <a href='/search?model_type=coupe'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/coupe.png"></a>
-                    <a href='/search?model_type=estate'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/estate.png"></a>
-                    <a href='/search?model_type=hatchback'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/hatchback.png"></a>
-                    <a href='/search?model_type=mpv'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/mpv.png"></a>
-                    <a href='/search?model_type=pickup'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/pickup.png"></a>
-                    <a href='/search?model_type=saloon'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/saloon.png"></a>
-                    <a href='/search?model_type=suv'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/suv.png"></a>
-                    <a href='/search?model_type=panelvan'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/panelvan.png"></a>
-                    <a href='/search?model_type=fourbyfour'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/fourbyfour.png"></a>
-            </carousel>
-        </div>
-    </div>
 <div class="row justify-content-center">
 
 	<h1>Used {{$checkedMake->make ?? '' }} cars for sale  {{$city->town ?? ''}}</h1>
-	<v-select multiple v-model="selected" :options="['foo','bar']"></v-select>
-</div>
 
+</div>
+<example-component></example-component>
+
+<!--
 	<div class="row justify-content-center">
 		<div class='col-lg-2 col-md-4 col-sm-12 '>
 			<button type="button" class="btn btn-sm btn-outline-info"><span onclick="toggleNav()">&lsaquo;&lsaquo;   Search for Cars</span></button>
@@ -65,7 +72,8 @@
 		<div class='col-lg-6 col-sm-12 col-md-8' >{!! $motors->appends(Request::except('page'))->render() !!}</div>
 
 		<div class='col-lg-2 col-sm-12 col-md-4' >@sortablelink('make', 'Make')	@sortablelink('price', 'Price')</div>
-		                          <!-- Use any element to open the sidenav -->
+		
+
     </div>
 
 		<div class="row justify-content-center">	
@@ -106,6 +114,7 @@
         @endforeach
 	</div>
 	 {!! $motors->appends(Request::except('page'))->render() !!} 
+	-->
 </div>
 
 @endsection

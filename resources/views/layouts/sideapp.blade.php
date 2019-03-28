@@ -129,6 +129,7 @@
                     </div>
                 </nav>
               <div id="mySidenav" class="sidenav">
+                <div id='demo'></div>
                
                 @include('vehiclefilter')
                 
@@ -149,7 +150,7 @@
 
 
       
-    <script type="text/javascript">
+<script type="text/javascript">
         function toggleNav(){
             var x = document.getElementById("mySidenav");
             if (x.style.width === "250px"){
