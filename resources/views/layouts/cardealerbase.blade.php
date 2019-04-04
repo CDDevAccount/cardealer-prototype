@@ -28,57 +28,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
     <link rel="stylesheet" href="/css/styles.css?v=2">
     <link rel="stylesheet" href="/css/style.css?v=2">
-    <style type="text/css">
-      /* The side navigation menu */
-    .sidenav {
-      height: 100%; /* 100% Full-height */
-      width: 0; /* 0 width - change this with JavaScript */
-      position: fixed; /* Stay in place */
-      z-index: 10; /* Stay on top */
-      top: 0; /* Stay at the top */
-      left: 0;
-      background-color: #2e3192; /* Black*/
-      overflow-x: hidden; /* Disable horizontal scroll */
-      padding-top: 60px; /* Place content 60px from the top */
-      transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-    }
+    <link rel="stylesheet" href="/css/used-cars.css">
 
-    /* The navigation menu links */
-    .sidenav a {
-      padding: 8px 8px 8px 32px;
-      text-decoration: none;
-      font-size: 25px;
-      color: #818181;
-      display: block;
-      transition: 0.3s;
-    }
-
-    /* When you mouse over the navigation links, change their color */
-    .sidenav a:hover {
-      color: #f1f1f1;
-    }
-
-    /* Position and style the close button (top right corner) */
-    .sidenav .closebtn {
-      position: absolute;
-      top: 0;
-      right: 25px;
-      font-size: 36px;
-      margin-left: 50px;
-    }
-
-    /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-    #main {
-      transition: margin-left .5s;
-      padding: 20px;
-    }
-
-    /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-    @media screen and (max-height: 450px) {
-      .sidenav {padding-top: 15px;}
-      .sidenav a {font-size: 18px;}
-    }
-    </style>
 </head>
 
 <body id="index" class="index loc-0 ">
@@ -140,7 +91,7 @@
                                         </li>
                                         <li class="megamenu__listitem" id="listitem__used-cars--parent" itemprop="name"
                                             data-menu-dropdown="cars">
-                                            <a href="javascript:void(0);" itemprop="url"
+                                            <a href="/used-cars/" itemprop="url"
                                                class="megamenu__listitem__link megamenu__listitem__link--parent"
                                                title="Used Cars" role="menuitem" data-menu-close>
                                                 Used Cars
@@ -159,7 +110,7 @@
                                                                         <div class="megamenu-group__title">Used Cars
                                                                         </div>
                                                                         <ul class="megamenu-group__list">
-                                                                            <li><a href="#" title="View all cars">View
+                                                                            <li><a href="/used-cars/" title="View all cars">View
                                                                                 all cars</a></li>
                                                                             <li><a href="#" title="All Stock">All
                                                                                 Stock</a></li>
@@ -373,26 +324,13 @@
                 meeting you!</p>
             <p><strong>We Are Open 7 Days A Week From 9am - 9pm</strong></p>
         </div>
-        <div id="mySidenav" class="sidenav">
-            <div id='demo'></div>
-           
-            @include('vehiclefilter')
-            
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      
-         </div>
-            <div id="app">
+
+</div>
+        <div id="app">
 
                 @yield('content')
 
-            </div>
-        <div class="row">
-            <!-- Content -->
-
-
-    </div>
-    </div>
-
+        </div>
 <footer class="footer footer--seo-footer">
     <!-- Used Vehicles -->
     <div class="footer__top">

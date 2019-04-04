@@ -1,17 +1,18 @@
-@extends('layouts.sideapp')
+@extends('layouts.cardealerbase')
 
 @section('content')
 
 
 <div class="container">
 <nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/">Home</a></li>
-    <li class="breadcrumb-item"><a href="/used-cars">Used Cars</a></li>
-    <li class="breadcrumb-item" aria-current="page">Results</li>
-	 <li class="breadcrumb-item active" aria-current="page">
-            <a data-toggle="collapse" href="#collapseSearch" role="button" aria-expanded="false" aria-controls="collapseExample">View Filter</a>
-        </li>  </ol>
+  	<ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="/">Home</a></li>
+	    <li class="breadcrumb-item"><a href="/used-cars">Used Cars</a></li>
+	    <li class="breadcrumb-item" aria-current="page">Results</li>
+		<li class="breadcrumb-item active" aria-current="page">
+	        <a data-toggle="collapse" href="#collapseSearch" role="button" aria-expanded="false" aria-controls="collapseExample">View Filter</a>
+	    </li>  
+	</ol>
 </nav>
     {!! Form::open(['url' => '/filter/','method' => 'post']) !!}
     <div class="collapse" id="collapseSearch">
@@ -61,8 +62,17 @@
 	<h1>Used {{$checkedMake->make ?? '' }} cars for sale  {{$city->town ?? ''}}</h1>
 
 </div>
-<example-component></example-component>
+</div>
 
+	
+<div class="brdcrumb">
+    
+		@include('extended_vehicle_filter')
+</div>
+<div class='col-lg-8 offset-lg-2'>
+<catalogue-component></catalogue-component>
+
+</div>
 <!--
 	<div class="row justify-content-center">
 		<div class='col-lg-2 col-md-4 col-sm-12 '>

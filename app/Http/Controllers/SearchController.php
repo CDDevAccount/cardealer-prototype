@@ -30,13 +30,18 @@ class SearchController extends Controller
 
         $request->flash();
         $vehicle= (new TblVehicle)->newQuery();
+        $data=TblVehicle::orderBy('id')->paginate(6);
         $dealers='all';
+      //  return $vehicle
+      //   return response()->json($data);
+     
 // Wheres
         
         if ($request->filled('postcode')){
         // get dealers within settings-default distance
             $dealers=$this->localdealers($request->postcode);
             $request->session()->put('dealers', $dealers);
+            $request->session()->put('postcode',$request->postcode);
             $vehicle->whereIn('did', $dealers);
 
         }else{
@@ -109,6 +114,7 @@ class SearchController extends Controller
        
         $cars=$vehicle->paginate(24);
         return view('index',compact('cars','marques','dealers'));
+
     }
 
 
@@ -234,39 +240,46 @@ class SearchController extends Controller
 
                 $res = $client->get('https://api.postcodes.io/outcodes?lon='.$long.'&lat='.$lat.'&radius=24999&limit=99');
             
+            }else{
+                $postcode=false;
+
             }
-            // with the longitude and latitude, get the outcodes of the surrounding postcodes
             $outcodes=array();
-                
-            if ($res->getStatusCode()===200){
-                $results=json_decode($res->getBody(),true);
+            if ($postcode){
+                if ($res->getStatusCode()===200){
+                    $results=json_decode($res->getBody(),true);
 
-                foreach($results as $entry)
-                {
-                    if (is_array($entry)){
+                    foreach($results as $entry)
+                    {
+                        if (is_array($entry)){
 
-                        foreach ($entry as $loc) {
-                            array_push($outcodes,$loc['outcode']);
+                            foreach ($entry as $loc) {
+                                array_push($outcodes,$loc['outcode']);
+                            }
                         }
                     }
-                }
-            };
+                };
 
-            $inclause="'".implode("','",$outcodes)."'";
-            $dealers=TblDealer::whereIn('outcode', $outcodes)->pluck('id')->toArray();
+                $inclause="'".implode("','",$outcodes)."'";
+                $dealers=TblDealer::whereIn('outcode', $outcodes)->pluck('id')->toArray();                
+            }else{
+                $dealers=TblDealer::all()->pluck('id')->toArray();
+            }
+            // with the longitude and latitude, get the outcodes of the surrounding postcodes
+
             //$dealers=$dealers->pluck('id','dealerid');
 
             return $dealers;
     }
 
+
     /*
         filter section to refine selected cars.
-
 
      */
         public function filter(Request $request)
         {
-            $dealers=false;
+         $dealers=false;
          $vehicle= (new TblVehicle)->newQuery();
        
         if ($request->filled('makes')){
@@ -282,7 +295,7 @@ class SearchController extends Controller
         }
 
 
-        $cars=$vehicle->paginate(12);
+        $data=$vehicle->paginate(12);
             // return response()->json($cars);
             if (Cache::has('makes')) {
                $marques= Cache::store('file')->get('makes');
@@ -295,9 +308,11 @@ class SearchController extends Controller
                 $marques=$marques->pluck('make','make');
                 Cache::store('file')->put('makes', $marques, 10);
             }
-            
+     //           return response()->json($data);
         return view('index',compact('cars','marques','dealers'));
         }
+
+
 
     public function getSearch(Request $request)
     {
@@ -342,6 +357,8 @@ class SearchController extends Controller
         $cars=$vehicle->get();
         return view('index',compact('cars'),compact('marques'));
     }
+
+
     /**
      * Display the specified resource.
      *

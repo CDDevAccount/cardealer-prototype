@@ -22,6 +22,8 @@
         <link rel="stylesheet" href="css/styles.css?v=2">
         <link rel="stylesheet" href="css/style.css?v=2">
 
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script> 
+
 </head>
 <body id="index" class="index loc-0 ">
 
@@ -47,7 +49,7 @@
                 <div class="container clear-fix">
                     <!-- Header Main Logo -->
                     <div class="header-main__logo">
-                        <a href="index.html" title="Used cars in Leighton Buzzard, Bedfordshire">
+                        <a href="/" title="Used cars in Leighton Buzzard, Bedfordshire">
                             <!-- Hilton Car Supermarket -->
                             <img src="images/new_logo.png" alt="Used cars for sale in Leighton Buzzard, Bedfordshire"
                                  class="responsive-img">
@@ -83,7 +85,7 @@
                                         </li>
                                         <li class="megamenu__listitem" id="listitem__used-cars--parent" itemprop="name"
                                             data-menu-dropdown="cars">
-                                            <a href="javascript:void(0);" itemprop="url"
+                                            <a href="/used-cars/" itemprop="url"
                                                class="megamenu__listitem__link megamenu__listitem__link--parent"
                                                title="Used Cars" role="menuitem" data-menu-close>
                                                 Used Cars
@@ -310,61 +312,12 @@
                     </div>
                     <div class="search-overlay">
                         <div data-advanced-search="main" class="o-search o-search--home">
-                            <form method="get" action="#">
+     
                                 <div class="inner-wrapper">
-                                    <!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-                                    <div id="header_form">
-                                        <div class="container">
-                                            <div class="col-md-2 col-sm-2">
-                                                <div class="form-group">
-                                                    <input type="text" id="postcode" placeholder="postcode" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2 col-sm-2">
-                                                <div class="form-group">
-                                                    <select name="make" id="make" data-search-field="main"
-                                                            data-search-filters="injectedLocation,location,budgetmin,budgetmax">
-                                                        <option value="">Any make</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2 col-sm-2">
-                                                <div class="form-group">
-                                                    <select name="model" id="model" data-search-field="main"
-                                                            data-search-filters="injectedLocation,location,make,trim,body,gearbox,doors,body_colour,fuel_type,budgetmin,budgetmax,seats">
-                                                        <option value="">Any model</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2 col-sm-2">
-                                                <div class="form-group">
-                                                    <select name="budgetmin" id="budgetmin" data-search-field="aside"
-                                                            data-search-filters="injectedLocation,location,make,model,variant,trim,body,gearbox,doors,body_colour,fuel_type,seats">
-                                                        <option value="">Price (Min)</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2 col-sm-2">
-                                                <div class="form-group">
-                                                    <select name="budgetmax" id="budgetmax" data-search-field="aside"
-                                                            data-search-filters="injectedLocation,location,make,model,variant,trim,body,gearbox,doors,body_colour,fuel_type,seats">
-                                                        <option value="">Price (Max)</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2 col-sm-2">
-                                                <div class="button-group button-group--search">
-                                                    <button type="submit" class="btn"><span aria-hidden="true"
-                                                                                            class="fa fa-search"></span>
-                                                        Search
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                      @include('vehiclefilter')
+
 
                                 </div>
-                            </form>
                         </div>
                         <script src="assets/js/themev2/search.min4509.js?v=1553006553" defer></script>
                     </div>
@@ -1223,7 +1176,60 @@
                 }
             })
         </script>
+      
+<script type="text/javascript">
+        function toggleNav(){
+            var x = document.getElementById("mySidenav");
+            if (x.style.width === "250px"){
+              x.style.width="0px";
+            }else{
+              x.style.width="250px";
+            };
+        }
+        /* Set the width of the side navigation to 250px */
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+      }
 
+      /* Set the width of the side navigation to 0 */
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+
+  var app = angular.module('carapp', [], function($interpolateProvider) {
+        $interpolateProvider.startSymbol('<%');
+        $interpolateProvider.endSymbol('%>');
+    });
+
+    app.controller("carcontroller", function($scope, $http){  
+
+      $scope.loadMake = function(){  
+         var url="{{url('get-make-list')}}";
+         $http.get(url)  
+         .success(function(data){  
+              $scope.makes = data;  
+          //    console.log($scope.makes);
+          //    console.log('test_');
+         })  
+      }  
+
+      $scope.loadModel = function(){ 
+           var url="{{url('get-model-list')}}?make="+$scope.make; 
+           $http.get(url)  
+           .success(function(data){  
+                $scope.models = data;  
+           })  
+      }
+      $scope.loadBodies=function(){
+           var url="{{url('get-body-list')}}?make="+$scope.make+"&model_family="+$scope.model; 
+           $http.get(url)  
+           .success(function(data){  
+                $scope.types = data;  
+           })  
+      }  
+ 
+ }); 
+</script>
 
     </body>
 </html>

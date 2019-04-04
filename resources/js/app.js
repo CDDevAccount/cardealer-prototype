@@ -20,6 +20,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 
 //Vue.component('example-component', require('./components/BaseTemplate.vue'));
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('catalogue-component', require('./components/CatalogueComponent.vue').default);
 Vue.component('InfiniteLoading', require('vue-infinite-loading').default);
 
 Vue.component('button-counter', {

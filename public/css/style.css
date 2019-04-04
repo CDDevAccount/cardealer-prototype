@@ -142,7 +142,13 @@ a.a_cars_Sshow {
 a.finance-card {
     margin: 20px 0;
 }
+#header .header-main__logo {
 
+    position: absolute;
+    width: unset;
+    left: 50%;
+    transform: translateX(-50%);
+}
 }
 
 @media screen and (max-width: 992px) and (min-width: 768px ){
@@ -175,3 +181,8 @@ a.finance-card {
     line-height: 85px;
     transition: 0.5s ease all;
 }
+
+
+
+/**************************** Used Cars **********************/
+
