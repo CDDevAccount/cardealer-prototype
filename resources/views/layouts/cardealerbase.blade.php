@@ -278,6 +278,7 @@
                                                                title="Milton Keynes" role="menuitem">
                                                                 <i class="fas fa-caret-right"></i> Milton Keynes
                                                             </a>
+                                                            <map-component></map-com2ponent>
                                                         </li>
                                                         <li class="megasubmenu__listitem" id="listitem__london">
                                                             <a href="#" class="megasubmenu__listitem__link"
@@ -522,61 +523,7 @@
         </li>
     </ul>
 </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>       
-<script type="text/javascript">
-        function toggleNav(){
-            var x = document.getElementById("mySidenav");
-            if (x.style.width === "250px"){
-              x.style.width="0px";
-            }else{
-              x.style.width="250px";
-            };
-        }
-        /* Set the width of the side navigation to 250px */
-      function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-      }
 
-      /* Set the width of the side navigation to 0 */
-      function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-      }
-
-  var app = angular.module('carapp', [], function($interpolateProvider) {
-        $interpolateProvider.startSymbol('<%');
-        $interpolateProvider.endSymbol('%>');
-    });
-
-    app.controller("carcontroller", function($scope, $http){  
-
-      $scope.loadMake = function(){  
-         var url="{{url('get-make-list')}}";
-         $http.get(url)  
-         .success(function(data){  
-              $scope.makes = data;  
-          //    console.log($scope.makes);
-          //    console.log('test_');
-         })  
-      }  
-
-      $scope.loadModel = function(){ 
-           var url="{{url('get-model-list')}}?make="+$scope.make; 
-           $http.get(url)  
-           .success(function(data){  
-                $scope.models = data;  
-           })  
-      }
-      $scope.loadBodies=function(){
-           var url="{{url('get-body-list')}}?make="+$scope.make+"&model_family="+$scope.model; 
-           $http.get(url)  
-           .success(function(data){  
-                $scope.types = data;  
-           })  
-      }  
-
- });  
-
- </script>
 </body>
 
 </html>
