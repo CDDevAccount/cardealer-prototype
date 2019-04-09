@@ -13,6 +13,37 @@
         </li>
       </ol>
     </nav>
+<button 
+   type="button" 
+   class="btn btn-primary btn-lg" 
+   data-toggle="modal" 
+   data-target="#mapModal">
+  View Map
+</button>
+<div class="modal fade" id="mapModal" 
+     tabindex="-1" role="dialog" 
+     aria-labelledby="favoritesModalLabel">
+  <div class="modal-dialog  modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <button type="button" class="close" 
+          data-dismiss="modal" 
+          aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="mapModalLabel">Dealers in the area</h4>
+      </div>
+      <div class="modal-body">
+        <map-component></map-component>
+      </div>
+      <div class="modal-footer">
+        <button type="button" 
+           class="btn btn-default" 
+           data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 
     {!! Form::open(['url' => '/setfilter','method' => 'post']) !!}

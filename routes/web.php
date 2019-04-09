@@ -19,6 +19,7 @@ Route::resources([
     'car'=>'CarController',
     'search'=>'SearchController',
     'filter'=>'FilterController',
+    'map'=>'MapController',
     'used-cars'=> 'UsedCarsController',
     'dash'=>'DashController',
     'api'=>'APIController'   
