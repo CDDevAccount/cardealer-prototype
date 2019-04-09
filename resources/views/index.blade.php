@@ -13,13 +13,7 @@
         </li>
       </ol>
     </nav>
-<button 
-   type="button" 
-   class="btn btn-primary btn-lg" 
-   data-toggle="modal" 
-   data-target="#mapModal">
-  View Map
-</button>
+
 <div class="modal fade" id="mapModal" 
      tabindex="-1" role="dialog" 
      aria-labelledby="favoritesModalLabel">
@@ -121,8 +115,14 @@
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="card text text-center">
                 <div class="card-header">
-                          <!-- Use any element to open the sidenav -->
-                    <button type="button" class="btn btn-sm btn-outline-info"><span onclick="toggleNav()">&lsaquo;&lsaquo;   Search for Cars</span></button>
+                          <!-- View dealer positions on a map -->
+                        <button 
+                           type="button" 
+                           class="btn btn-primary btn-lg" 
+                           data-toggle="modal" 
+                           data-target="#mapModal">
+                          View Map
+                        </button>
                     
                 </div>
                 <div class="card-body text-center">
