@@ -39,6 +39,7 @@ class SearchController extends Controller
         
         if ($request->filled('postcode')){
         // get dealers within settings-default distance
+           // dd($request->postcode);
             $dealers=$this->localdealers($request->postcode);
             $request->session()->put('dealers', $dealers);
             $request->session()->put('postcode',$request->postcode);

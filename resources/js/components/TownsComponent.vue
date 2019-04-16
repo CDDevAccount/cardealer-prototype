@@ -1,18 +1,12 @@
 <template>
-  <section v-if="errored">
-    <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
-  </section>
-  <section v-else>
-    <div v-if="loading">Loading...</div>
-    <div v-else>
-      <GmapMap :center="{lat:52.637, lng:1.2868}" :zoom="10" map-type-id="terrain" style="width: 450px; height: 350px">
+    <div>
+      <GmapMap :center="{lat:53.764213, lng:1.049}" :zoom="6" map-type-id="terrain" style="width: 450px; height: 350px">
         <gmap-info-window :options="infoOptions" :position="infoPosition" :opened="infoOpened" @closeclick="infoOpened=false">
           {{infoContent}}
         </gmap-info-window>
-        <GmapMarker :key="index" v-for="(m, index) in markers" :position="getPosition(m)" :clickable="true" :draggable="true" @click="toggleInfo(m, index)" />
+        <GmapMarker :key="index" v-for="(town, index) in towns" :position="getPosition(town)" :clickable="true" :draggable="true" @click="toggleInfo(town, index)" />
       </GmapMap>
     </div>
-  </section>
 </template>
 
 <script>
@@ -20,8 +14,8 @@
         mounted() {
           console.log('Component mounted.')
           axios
-            .get('/map')
-            .then(response => (this.markers = response.data.markers))
+            .get('/get-city-list')
+            .then(response => (this.towns = response.data.towns))
             .catch(error => {
               console.log(error)
               this.errored = true
@@ -30,10 +24,11 @@
         },
         data() {
           return {
-            markers: null,
+            towns: null,
             infoPosition: null,
             infoContent: null,
             infoOpened: false,
+            infoUrl:null,
             infoCurrentKey: null,
             infoOptions: {
               pixelOffset: {
@@ -44,15 +39,16 @@
           };
         },
         methods: {
-          getPosition: function(marker) {
+          getPosition: function(town) {
             return {
-              lat: parseFloat(marker.latitude),
-              lng: parseFloat(marker.longitude)
+              lat: parseFloat(town.latitude),
+              lng: parseFloat(town.longitude)
             }
           },
-          toggleInfo: function(marker, key) {
-            this.infoPosition = this.getPosition(marker)
-            this.infoContent = marker.name
+          toggleInfo: function(town, key) {
+            this.infoPosition = this.getPosition(town)
+            this.infoContent = town.town
+            this.infoUrl=town.town_slug
             if (this.infoCurrentKey == key) {
               this.infoOpened = !this.infoOpened
             } else {

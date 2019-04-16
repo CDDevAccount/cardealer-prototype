@@ -3,6 +3,27 @@
             <section class="show_car_S">
 
                     <div class="flex_dr" v-for="item of cars">
+
+            <div class="title_Car__detailss">
+                <div class="flex">
+                    <div class="flex_1">
+                        <img :src="'/images/'+item.make+'-logo.png'" :alt="item.make">
+                    </div>
+                    <div class="flex_2">
+                        <div class="results-title__wrapper">
+                            <h2 class="results-title__heading">
+                                <a v-bind:href="'/used-cars/for-sale/'+item.slug">{{item.make}} {{item.model}}</a>
+                            </h2>
+                            <div class="results-title__variant">{{item.year}} {{item.model}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
                         <div class="row" >
                             <div class="col-md-4 col-sm-6">
                                 <a v-bind:href="'/used-cars/for-sale/'+item.slug" title:item.make class="results-image__link">
@@ -24,20 +45,9 @@
                                     </div>
                                 </a>
                             </div>
+
                             <div class="col-md-4  col-sm-12">
-                                <div class="flex">
-                                    <div class="flex_1">
-                                        <img :src="'/images/'+item.make+'-logo.png'" :alt="item.make">
-                                    </div>
-                                    <div class="flex_2">
-                                        <div class="results-title__wrapper">
-                                            <h2 class="results-title__heading">
-                                                <a v-bind:href="'/used-cars/for-sale/'+item.slug">{{item.model}}</a>
-                                            </h2>
-                                            <div class="results-title__variant">{{item.model}}</div>
-                                        </div> 
-                                    </div>
-                                </div>
+
                                 <div class="results-prices">
                                     <div class="results-prices__cash-block">
                                         <div class="results-prices__label">Price</div>
@@ -69,45 +79,27 @@
                             <div class="clearfix"></div>
                             <div class="results-icons results-icons--loc-18">
                                 <ul class="results-icons__list">
-                                    <li><span class="spec-icon"><img src="/images/year.png" alt=""></span>{{item.year}}</li>
+                                    <li><span class="spec-icon"><img src="/images/year.png" alt="Year"></span>{{item.year}}</li>
                                     <!-- year -->
-                                    <li><span class="spec-icon"><img src="/images/fuel.png" alt="Year Make Model}}"></span>{{item.fuel_type}}</li>
+                                    <li><span class="spec-icon"><img src="/images/fuel.png" alt="Fuel"></span>{{item.fuel_type}}</li>
                                     <!-- fuel -->
-                                    <li><span class="spec-icon"><img src="/images/engine.png" alt="Year Make Model}}"></span>{{item.engine_size}}</li>
+                                    <li><span class="spec-icon"><img src="/images/engine.png" alt="Engine"></span>{{item.engine_size}}</li>
                                     <!-- engine -->
-                                    <li><span class="spec-icon"><img src="/images/mileage.png" alt="Year Make Model}}"></span>{{item.mileage}}</li>
+                                    <li><span class="spec-icon"><img src="/images/mileage.png" alt="Mileage"></span>{{item.mileage}}</li>
                                     <!-- Mileage -->
-                                    <li><span class="spec-icon"><img src="/images/road-tax.png" alt="Year Make Model}}"></span>road tax</li>
+                                    <li><span class="spec-icon"><img src="/images/road-tax.png" alt="Road Tax"></span>road tax</li>
                                     <!-- Road Tax -->
-                                    <li><span class="spec-icon"><img src="/images/body-type.png" alt="Year Make Model}}"></span>{{item.model_type}}</li>
+                                    <li><span class="spec-icon"><img src="/images/body-type.png" alt="Body Type"></span>{{item.model_type}}</li>
                                     <!-- body type -->
-                                    <li><span class="spec-icon"><img src="/images/doors.png" alt="Year Make Model}}"></span>{{item.doors}}</li>
+                                    <li><span class="spec-icon"><img src="/images/doors.png" alt="Doors"></span>{{item.doors}}</li>
                                     <!-- doors -->
-                                    <li><span class="spec-icon"><img src="/images/colour.png" alt="Year Make Model}}"></span>{{item.colour}}</li>
+                                    <li><span class="spec-icon"><img src="/images/colour.png" alt="Colour"></span>{{item.colour}}</li>
                                     <!-- colour -->
-                                    <li><span class="spec-icon"><img src="/images/transmission.png" alt="Year Make Model}}"></span>{{item.transmission}}</li>
+                                    <li><span class="spec-icon"><img src="/images/transmission.png" alt="Gearbox"></span>{{item.transmission}}</li>
                                     <!-- transmission -->
                                 </ul>
                             </div>
-                            <div class="results-info-bar">
-                                <!-- Results Location -->
-                                <div class="results-location results-location--loc-18">
-                                    <span class="results-location__icon"><img src="/images/mini.jpg" alt="2016 16 LAND ROVER RANGE ROVER SPORT 3.0 SDV6 HSE 5d AUTO 288 BHP - EURO 6 -"></span>
-                                    <span class="results-location__label">Vehicle Details:</span>
-                                    <span class="results-location__location">{{item.year}} {{item.make}} {{item.model}}</span>
-                                </div>
-                                <!-- // Results Location -->
-                                <!-- Results Status -->
-                                <div class="results-status results-status--loc-18">
-                                    <span class="results-status__label">Status:</span>
-                                    <span class="results-status__status">In Stock</span>
-                                </div>
-                                <!-- // Results Status -->
-                                <div class="results-ref results-ref--loc-18">
-                                    <span class="results-ref__label">Ref:</span>
-                                    <span class="results-ref__ref">{{item.registration}}</span>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <infinite-loading @distance="1" @infinite="infiniteHandler"></infinite-loading>

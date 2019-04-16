@@ -6,10 +6,12 @@
 
 require('./bootstrap');
 
+
 window.Vue = require('vue');
 Vue.use(require('vue-resource'));
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -22,7 +24,9 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('catalogue-component', require('./components/CatalogueComponent.vue').default);
 Vue.component('map-component', require('./components/MapComponent.vue').default);
+Vue.component('town-component', require('./components/TownsComponent.vue').default);
 Vue.component('InfiniteLoading', require('vue-infinite-loading').default);
+Vue.component('basic-search', require('./components/BasicSearch.vue').default);
 
 Vue.component('button-counter', {
   data: function () {
@@ -40,7 +44,6 @@ import Swatches from 'vue-swatches'
 
 import circleslider from 'vue-circle-slider';
 Vue.use(require('vue-circle-slider'));
-//Vue.component('welcome', require('./components/Welcome.vue').default);
 Vue.component('swatch', require('./components/SwatchTemplate.vue').default);
 
 
@@ -50,7 +53,7 @@ import * as VueGoogleMaps from 'vue2-google-maps'
  
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyDdayjGWb7esdPIMnFcLOoZhM0zjxUiQgk',
+    key: process.env.MIX_GOOGLE_MAPS_API_KEY ,
     libraries: 'places', // This is required if you use the Autocomplete plugin
     // OR: libraries: 'places,drawing'
     // OR: libraries: 'places,drawing,visualization'

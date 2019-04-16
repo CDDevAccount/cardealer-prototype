@@ -24,4 +24,6 @@ class MapController extends Controller
         return response()->json(['markers'=>$dealers]);
    }
 
+
+
 }

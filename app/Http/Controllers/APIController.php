@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use DB;
-
+use App\Models\TblDealer;
 /*
 RCM 28/11/2018 - Filter makes and models
 */
@@ -19,6 +19,7 @@ class APIController extends Controller
     {
         $value=false;
         $dealers=false;
+
         if ($request->session()->has('dealers')) {
 
             $value = session('dealers');
@@ -29,17 +30,17 @@ class APIController extends Controller
         if (!$dealers){
           $makes = DB::table('tbl_vehicles')
                 ->select('make', DB::raw('count(*) as total'))
-                 ->groupBy('make')
-                 ->get();
+                ->groupBy('make')
+                ->get();
         }else{
             $makes = DB::table('tbl_vehicles')
                 ->select('make', DB::raw('count(*) as total'))
                 ->wherein('did',$dealers)
-                 ->groupBy('make')
-                 ->get();           
+                ->groupBy('make')
+                ->get();           
         }
 
-        return response()->json($makes);
+        return response()->json(['makes'=>$makes]);
     }
 
     
@@ -70,7 +71,7 @@ class APIController extends Controller
                         ->whereIn('did',$dealers)
                         ->get();           
         }
-        return response()->json($models);
+        return response()->json(['models'=>$models]);
     }
 
     public function getBodyList(Request $request)
@@ -102,16 +103,17 @@ class APIController extends Controller
             ->get();
         }
 
-            return response()->json($types);
+            return response()->json(['bodies'=>$types]);
     }
-
+    
     public function getCityList(Request $request)
     {
-        $cities = DB::table("cities")
-                    ->where("state_id",$request->state_id)
-                    ->select("name","id")
+        $cities = DB::table("tbl_towns")
+               //     ->where("id",$request->town_id)
+                    ->select("town","id","town_slug","longitude","latitude","town_slug")
+                    ->orderby("town")
                     ->get();
-        return response()->json($cities);
+        return response()->json(['towns'=>$cities]);
     }
 
 
@@ -125,4 +127,49 @@ class APIController extends Controller
         return response()->json($motors);
     }
 
+
+    public function setDealerLocation()
+    {
+        $dealers=TblDealer::whereNull('longitude')->get();
+        foreach($dealers as $dealer){
+               // dd( $dealer->longitude);
+                $coords= $this->getLonLat($dealer->postcode);
+                $dealer->latitude=$coords->lat;
+                $dealer->longitude=$coords->long;
+                $dealer->save();
+
+                                //dd($coords->lat);
+        }
+
+       // return response()->json($motors);
+    }
+    private static function getLonLat($pcode = false)
+    {
+          $coords = (object) [
+            'long' => 0,
+            'lat' => 0,
+          ];
+       //$coords= new coords();;
+        if ($pcode){
+                    // instantiate a Guzzle http client & get the longitude and latitude of Postcode
+        $client = new \GuzzleHttp\Client();
+        $res = $client->get('https://api.postcodes.io/postcodes?q='.$pcode);
+        if ($res->getStatusCode()===200){
+            $results=json_decode($res->getBody(),true);
+            foreach($results as $entry)
+            {
+                if (is_array($entry)){
+                    foreach ($entry as $loc) {
+                        $coords->long=$loc['longitude'];
+                        $coords->lat=$loc['latitude'];
+                      //  $long=$loc['longitude'];
+                       // $lat=$loc['latitude'];
+                    }
+                }
+            }
+        };
+        }
+       // dd($coords);
+        return $coords;
+    }
 }

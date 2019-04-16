@@ -98,7 +98,7 @@ class UsedCarsController extends Controller
   dd($query);
   */  
        // $motors->sortable()->paginate(24)  ;   
-        return view('dealeritem',compact('motors','towns','city','checkedMake','marques')); 
+        return view('welcome_two',compact('motors','towns','city','checkedMake','marques')); 
     }
 
     public function getSearch(Request $request)
