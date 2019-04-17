@@ -6,26 +6,9 @@
                 <div class="footer__used-vehicles footer__used-vehicles--cars">
                     <div class="footer__title">Used Cars</div>
                     <ul class="footer__used-list">
-                        <li><a href="#" title="Used Alfa Romeo">Used <span>Alfa Romeo</span></a></li>
-                        <li><a href="#" title="Used Audi">Used <span>Audi</span></a></li>
-                        <li><a href="#" title="Used BMW">Used <span>BMW</span></a></li>
-                        <li><a href="#" title="Used Chevrolet">Used <span>Chevrolet</span></a></li>
-                        <li><a href="#" title="Used Chrysler">Used <span>Chrysler</span></a></li>
-                        <li><a href="#" title="Used Citroen">Used <span>Citroen</span></a></li>
-                        <li><a href="#" title="Used Ford">Used <span>Ford</span></a></li>
-                        <li><a href="#" title="Used Honda">Used <span>Honda</span></a></li>
-                        <li><a href="#" title="Used Jaguar">Used <span>Jaguar</span></a></li>
-                        <li><a href="#" title="Used Land Rover">Used <span>Land Rover</span></a></li>
-                        <li><a href="#" title="Used Mercedes-Benz">Used <span>Mercedes-Benz</span></a></li>
-                        <li><a href="#" title="Used MINI">Used <span>MINI</span></a></li>
-                        <li><a href="#" title="Used Mitsubishi">Used <span>Mitsubishi</span></a></li>
-                        <li><a href="#" title="Used Nissan">Used <span>Nissan</span></a></li>
-                        <li><a href="#" title="Used Porsche">Used <span>Porsche</span></a></li>
-                        <li><a href="#" title="Used Renault">Used <span>Renault</span></a></li>
-                        <li><a href="#" title="Used Toyota">Used <span>Toyota</span></a></li>
-                        <li><a href="#" title="Used Vauxhall">Used <span>Vauxhall</span></a></li>
-                        <li><a href="#" title="Used Volkswagen">Used <span>Volkswagen</span></a></li>
-                        <li><a href="#" title="Used Volvo">Used <span>Volvo</span></a></li>
+                    @foreach ($makes as $make)
+                        <li><a href="/search?make={{ $make->make }}" title="Used "{{$make->make}}>Used <span> {{ $make->make }}</span></a></li>
+                    @endforeach 
                     </ul>
                 </div>
             </div>
@@ -44,18 +27,17 @@
                         <div class="location-address location-address--loc-20">
                             <div class="location-address__icon"><img src="images/mini.jpg" style="    max-width: 35px;"
                                                                      alt="Milton Keynes"></div>
-                            <div class="location-address__name">Milton Keynes Branch</div>
-                            <div class="location-address__address">Watling Street,<br>Hockliffe,<br>Bedfordshire,<br>LU7
-                                9LJ
+                            <div class="location-address__name">Car Dealer Media Head Office</div>
+                            <div class="location-address__address">69-75 Yarmouth Road<br>Nowich,<br>Norfolk,<br>NR1 1AU
                             </div>
                             <div class="location-address__telephone"><i class="fa fa-phone" aria-hidden="true"></i>
-                                01908 888 140
+                                01603 959666
                             </div>
                             <div class="location-address__location"><i class="fas fa-map-marker-alt"></i><a href="#">
                                 Find us</a></div>
                         </div>
                         <!-- // location address -->
-                        <!-- location address -->
+                        <!-- location address 
                         <div class="location-address location-address--loc-18">
                             <div class="location-address__icon"><img src="images/mini.jpg" style="    max-width: 35px;"
                                                                      alt="London"></div>
@@ -106,15 +88,11 @@
                 <div class="footer__widget footer__widget--legal">
                     <div class="footer__title">Company Info</div>
                     <ul class="footer__legal-list">
-                        <li>FCA No. 728748</li>
+                        <li>FCA No. </li>
                     </ul>
                     <div class="footer__fca-para">
                         <div id="fca-disclaimer">
-                            Elite Automotive Ltd trading as Hilton Car Supermarket is authorised and regulated by the
-                            Financial Conduct Authority, FRN: 728748. All finance is subject to status and income.
-                            Written Quotation on request. We act as a credit broker not a lender. We work with a number
-                            of carefully selected credit providers who may be able to offer you finance for your
-                            purchase. We are only able to offer finance products from these providers.
+                            Car Dealer Media Limited are here to help you decide on your next big deal - the purchase of your new vehicle.
                         </div>
                     </div>
                 </div>
@@ -140,12 +118,12 @@
                     <!-- Powered by Click -->
                     <div class="footer__powered-by">
                         <div class="footer__powered-text">
-                            &copy; 2019 - <a rel="external nofollow" href="http://www.clickdealer.co.uk/"
-                                             title="Click Dealer">Website powered By Click Dealer</a>
+                            &copy; 2019 - <a rel="external nofollow" href="https://www.cardealer.co.uk/"
+                                             title="Click Dealer">Website powered By Car Dealer Media</a>
                         </div>
                         <div class="footer__click-logo">
-                            <a rel="external nofollow" href="" title="Click Dealer">
-                                <img src="images/new_logo.png" alt="Powered by Click Dealer"
+                            <a rel="external nofollow" href="" title="Car Dealer">
+                                <img src="images/new_logo.png" alt="Powered by Car Dealer"
                                      class="footer__click-logo lazy">
                             </a>
                         </div>

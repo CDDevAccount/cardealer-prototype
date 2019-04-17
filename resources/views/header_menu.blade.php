@@ -1,3 +1,4 @@
+   
     <header id="header" class="clear-fix" data-spy="affix" data-offset-top="197">
         <div class="header-main">
             <div class="wrapper">
@@ -60,37 +61,28 @@
                                                     </div>
                                                     <ul class="megamenu-group__list">
                                                         <li><a href="/used-cars/" title="View all cars">View
-                                                        all cars</a>
-                                                    </li>
-                                                    <li><a href="/used-cars/" title="All Stock">All
-                                                    Stock</a>
-                                                </li>
-                                                <li><a href="#" title="Milton Keynes Stock">Milton
-                                                Keynes Stock</a>
-                                            </li>
-                                            <li><a href="#" title="London Stock">London
-                                            Stock</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                                            all cars</a></li>
+                                                        <li><a href="/used-cars/" title="All Stock">All Stock</a></li>
+                                                    </ul>
+                                                </div>
                                 <!-- // Megamenu Group -->
-                            </div>
-                            <div class="column-2">
-                                <!-- Megamenu Group -->
-                                <div class="megamenu-group megamenu-group--price">
-                                    <div class="megamenu-group__title">Price</div>
-                                    <ul class="megamenu-group__list">
-                                        <li><a href="/search?maxprice=5000" title="" rel="nofollow">Under &pound;5,000</a>
-                                        </li>
-                                        <li><a href="/search?maxprice=10000" title="" rel="nofollow">Under &pound;10,000</a>
-                                        </li>
-                                        <li><a href="/search?maxprice=25000" title="" rel="nofollow">Under &pound;25,000</a>
-                                        </li>
-                                        <li><a href="/search?maxprice=50000" title="" rel="nofollow">Under &pound;50,000</a>
-                                        </li>
-                                        <!-- <li><a href="/search_page.php?price=999999" title="" rel="nofollow">Over &pound;50,000</a></li> -->
-                                    </ul>
-                                </div>
+                                            </div>
+                                            <div class="column-2">
+                                                <!-- Megamenu Group -->
+                                                <div class="megamenu-group megamenu-group--price">
+                                                    <div class="megamenu-group__title">Price</div>
+                                                    <ul class="megamenu-group__list">
+                                                        <li><a href="/search?maxprice=5000" title="" rel="nofollow">Under &pound;5,000</a>
+                                                        </li>
+                                                        <li><a href="/search?maxprice=10000" title="" rel="nofollow">Under &pound;10,000</a>
+                                                        </li>
+                                                        <li><a href="/search?maxprice=25000" title="" rel="nofollow">Under &pound;25,000</a>
+                                                        </li>
+                                                        <li><a href="/search?maxprice=50000" title="" rel="nofollow">Under &pound;50,000</a>
+                                                        </li>
+                                                        <!-- <li><a href="/search_page.php?price=999999" title="" rel="nofollow">Over &pound;50,000</a></li> -->
+                                                    </ul>
+                                                </div>
                                 <!-- // Megamenu Group -->
                                 <!-- Megamenu Group -->
                                 <div class="megamenu-group megamenu-group--finance">
@@ -103,125 +95,29 @@
                                     <li><a href="#" title=""
                                         rel="nofollow">Upto &pound;150
                                     p/m</a>
-                                </li>
-                                <li><a href="#" title=""
-                                    rel="nofollow">Over &pound;200
-                                p/m</a>
-                            </li>
-                        </ul>
-                    </div>
+                                            </li>
+                                            <li><a href="#" title=""
+                                                rel="nofollow">Over &pound;200
+                                            p/m</a>
+                                        </li>
+                                    </ul>
+                                </div>
                     <!-- // Megamenu Group -->
-                </div>
-                <div class="column-3">
-                    <!-- Megamenu Group -->
-                    <div class="megamenu-group megamenu-group--brands">
-                        <div class="megamenu-group__title">Brands</div>
-                        <ul class="megamenu-group__list">
-                            <li>
-                                <a href="#" title="Used Alfa Romeo">
-                                    <span>Alfa Romeo</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Used Audi">
-                                    <span>Audi</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Used BMW">
-                                    <span>BMW</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Used Chevrolet">
-                                    <span>Chevrolet</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Used Chrysler">
-                                    <span>Chrysler</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Used Citroen">
-                                    <span>Citroen</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Used Ford">
-                                    <span>Ford</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Used Honda">
-                                    <span>Honda</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Used Jaguar">
-                                    <span>Jaguar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Used Land Rover">
-                                    <span>Land Rover</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Used Mercedes-Benz">
-                                    <span>Mercedes-Benz</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Used MINI">
-                                    <span>Mini</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Used Mitsubishi">
-                                    <span>Mitsubishi</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Used Nissan">
-                                    <span>Nissan</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Used Porsche">
-                                    <span>Porsche</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Used Renault">
-                                    <span>Renault</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Used Toyota">
-                                    <span>Toyota</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Used Vauxhall">
-                                    <span>Vauxhall</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Used Volkswagen">
-                                    <span>Volkswagen</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Used Volvo">
-                                    <span>Volvo</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- // Megamenu Group -->
-                </div>
-            </div>
+                            </div>
+                            <div class="column-3">
+                                <!-- Megamenu Group -->
+                                <div class="megamenu-group megamenu-group--brands">
+                                    <div class="megamenu-group__title">Brands</div>
+                                    <ul class="megamenu-group__list">
+                                @foreach ($makes as $make)
+                                    <li><a href="/search?make={{ $make->make }}" title="Used "{{$make->make}}>Used <span> {{ $make->make }}</span></a></li>
+                                @endforeach 
+                
+                                    </ul>
+                                </div>
+                                <!-- // Megamenu Group -->
+                            </div>
+                        </div>
         </div>
     </div>
 </div>
@@ -308,14 +204,14 @@ Finance
                 <ul class="megasubmenu__list">
                     <li class="megasubmenu__listitem" id="listitem__milton-keynes">
                         <a href="#" class="megasubmenu__listitem__link"
-                        title="Milton Keynes" role="menuitem">
-                        <i class="fas fa-caret-right"></i> Milton Keynes
+                        title="England" role="menuitem">
+                        <i class="fas fa-caret-right"></i> England
                     </a>
                     </li>
                     <li class="megasubmenu__listitem" id="listitem__london">
                     <a href="#" class="megasubmenu__listitem__link"
-                    title="London" role="menuitem">
-                    <i class="fas fa-caret-right"></i> London
+                    title="Scotland" role="menuitem">
+                    <i class="fas fa-caret-right"></i> Scotland
                     </a>
                     </li>
                 </ul>

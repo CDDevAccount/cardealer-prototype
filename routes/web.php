@@ -17,7 +17,12 @@ Route::get('/', function () {
                     ->select("town","id","town_slug")
                     ->orderby("town")
                     ->get();
-    return view('welcome_one',compact('cities'));
+    $makes= DB::table("tbl_vehicles")
+    ->select('make')
+    ->distinct()
+    ->orderby('make')
+    ->get(['make']);
+    return view('welcome_one',compact('cities','makes'));
 });
 
 Route::resources([

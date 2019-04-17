@@ -9,14 +9,14 @@
                         <div class="col-md-2 col-sm-2">
                             <div class="form-group">
  
-                                <input type="text" id="postcode" placeholder="postcode" required name="postcode"  v-model="postcode" >
+                                <input type="text" id="postcode" placeholder="Post code" required name="postcode"  v-model="postcode" >
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-2">
                             <div class="form-group">
 
                                 <select name="make" id="make"  @change="changeMake" v-model="make" >
-                                    <option value="">Select make</option>
+                                    <option value="">Any make</option>
                                     <option v-for="make in makes">{{ make.make }}</option> 
                                     
                                 </select>

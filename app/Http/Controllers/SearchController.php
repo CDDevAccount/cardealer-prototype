@@ -60,8 +60,8 @@ class SearchController extends Controller
 
         }
         if ($request->filled('model')){
-
-            $vehicle->where('model',$request->model);
+// NB uses Model Family even though model field supplied.
+            $vehicle->where('model_family',$request->model);
 
         }
         if ($request->filled('model_family')){

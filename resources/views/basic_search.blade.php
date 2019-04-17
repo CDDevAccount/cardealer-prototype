@@ -9,6 +9,7 @@
                             <div class="form-group">
  
                                 <input type="text" id="postcode" placeholder="postcode" required name="postcode"  v-model="postcode" >
+
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-2">
