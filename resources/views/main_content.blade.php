@@ -6,70 +6,7 @@
                 <div class="hero-unit__heading">Thousands of cars on this site SOLD every day!
                 </div>
             </div>
-        <!--
-            <div class="search-overlay">
-                <div data-advanced-search="main" class="o-search o-search--home">
-                    <form method="get" action="#">
-                        <div class="inner-wrapper">
-                            
-                            <div id="header_form">
-                                <div class="container">
-                                    <div class="col-md-2 col-sm-2">
-                                        <div class="form-group">
-                                            <input type="text" id="postcode" placeholder="postcode" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 col-sm-2">
-                                        <div class="form-group">
-                                            <select name="make" id="make" data-search-field="main"
-                                                    data-search-filters="injectedLocation,location,budgetmin,budgetmax">
-                                                <option value="">Any make</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 col-sm-2">
-                                        <div class="form-group">
-                                            <select name="model" id="model" data-search-field="main"
-                                                    data-search-filters="injectedLocation,location,make,trim,body,gearbox,doors,body_colour,fuel_type,budgetmin,budgetmax,seats">
-                                                <option value="">Any model</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 col-sm-2">
-                                        <div class="form-group">
-                                            <select name="budgetmin" id="budgetmin" data-search-field="aside"
-                                                    data-search-filters="injectedLocation,location,make,model,variant,trim,body,gearbox,doors,body_colour,fuel_type,seats">
-                                                <option value="">Price (Min)</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 col-sm-2">
-                                        <div class="form-group">
-                                            <select name="budgetmax" id="budgetmax" data-search-field="aside"
-                                                    data-search-filters="injectedLocation,location,make,model,variant,trim,body,gearbox,doors,body_colour,fuel_type,seats">
-                                                <option value="">Price (Max)</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 col-sm-2">
-                                        <div class="button-group button-group--search">
-                                            <button type="submit" class="btn"><span aria-hidden="true"
-                                                                                    class="fa fa-search"></span>
-                                                Search
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                        </div>
-                    </form>
-                </div>
-                <script src="assets/js/themev2/search.min4509.js?v=1553006553" defer></script>
-            </div>
-    
-      
-                --> asdasda
             <basic-search></basic-search>
 
             <div class="reviews-overlay">
@@ -91,20 +28,93 @@
                 </div>
         <!-- Homepage Body Shape Search -->
                  <div class="container z1241">
-                        <carousel :items=6 :autoplay="true" :nav="false" :loop="true" :dots="false" :responsive="{0:{items:3,nav:false},600:{items:4,nav:false},900:{items:6,nav:false},1200:{items:8,nav:false}}" :autoplay-speed=true>
-                           <a href='/search?model_type=convertible'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/convertible.png"></a>
-                            <a href='/search?model_type=coupe'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/coupe.png"></a>
-                            <a href='/search?model_type=estate'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/estate.png"></a>
-                            <a href='/search?model_type=hatchback'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/hatchback.png"></a>
-                            <a href='/search?model_type=mpv'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/mpv.png"></a>
-                            <a href='/search?model_type=pickup'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/pickup.png"></a>
-                            <a href='/search?model_type=saloon'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/saloon.png"></a>
-                            <a href='/search?model_type=suv'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/suv.png"></a>
-                            <a href='/search?model_type=panelvan'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/panelvan.png"></a>
-                            <a href='/search?model_type=4X4'><img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/fourbyfour.png"></a>
-                        </carousel>
-                </div>
+                        <carousel :items=6 :autoplay="true" :nav=true :loop="true" :dots="true" :responsive="{0:{items:2,nav:false},600:{items:3,nav:false},900:{items:4,nav:false},1200:{items:5,nav:false}}" >
+                            <div class="wrylf_carz">
+                                <a href='/search?model_type=convertible'>
+                                <div class="img_car__z">
+                                    <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/convertible.png">
+                                </div>
+                                    <p>Convertible</p>
+                                </a>
+                            </div>
 
+                            <div class="wrylf_carz">
+                                <a href='/search?model_type=coupe'>
+                                <div class="img_car__z">
+                                    <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/coupe.png">
+                                </div>
+                                    <p>Coupe</p>
+                                </a>
+                            </div>
+                            
+                        <div class="wrylf_carz">
+                            <a href='/search?model_type=estate'>
+                                <div class="img_car__z">
+                                    <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/estate.png">
+                                </div>
+                                <p>Estate</p>
+                            </a>
+                        </div>
+                        <div class="wrylf_carz">                            
+                            <a href='/search?model_type=hatchback'>
+                                <div class="img_car__z">
+                                    <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/hatchback.png">
+                                </div>
+                                <p>Hatchback</p>
+                            </a>
+                        </div>
+                        <div class="wrylf_carz">                            
+                            <a href='/search?model_type=mpv'>
+                                <div class="img_car__z">
+                                    <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/mpv.png">
+                                </div>
+                                <p>MPV</p>
+                            </a>
+                        </div>
+                        <div class="wrylf_carz">                            
+                            <a href='/search?model_type=pickup'>
+                                <div class="img_car__z">
+                                    <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/pickup.png">
+                                </div>
+                                <p>Pickup</p>
+                            </a>
+                        </div>
+                        <div class="wrylf_carz">                            
+                            <a href='/search?model_type=saloon'>
+                                <div class="img_car__z">
+                                    <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/saloon.png">
+                                </div>
+                                <p>Saloon</p>
+                            </a>
+                        </div>
+                        <div class="wrylf_carz">                            
+                            <a href='/search?model_type=suv'>
+                                <div class="img_car__z">
+                                    <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/suv.png">
+                                </div>
+                               <p>SUV</p>
+                           </a>
+                        </div>
+                        <div class="wrylf_carz">                            
+                            <a href='/search?model_type=panelvan'>
+                                <div class="img_car__z">
+                                    <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/panelvan.png">
+                                </div>
+                                <p>Panel Van</p>
+                            </a>
+                        </div>
+                        <div class="wrylf_carz">                            
+                            <a href='/search?model_type=4X4'>
+                                <div class="img_car__z">
+                                    <img class="img-responsive" src="http://media.cardealer.co.uk/carbodies/fourbyfour.png">
+                                </div>
+                                    <p>Four Wheel Drive</p>
+                                </a>
+                            </div>
+
+                    </carousel>
+                </div>
+<!--
                 <div class="container z1241">
                     <div class="owl-carousel owl-theme">
                         <div class="item">
@@ -179,7 +189,7 @@
                         </div>
                     </div>
                 </div>
-
+-->
 
             </div>
         </div>
