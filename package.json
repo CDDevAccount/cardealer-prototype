@@ -20,7 +20,7 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
-        "ajv": "^6.6.1",
+        "ajv": "^6.12.3",
         "imagemin": "^6.0.0",
         "owl.carousel": "^2.3.4",
         "vue-infinite-loading": "^2.4.3",
